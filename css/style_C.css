@@ -1,0 +1,218 @@
+/* global styles */
+
+html {
+    box-sizing: border-box;
+    
+    
+    font-family: roboto;
+    background-color: azure;
+    border: 3px solid goldenrod;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+/* just to be able to see the different areas for now */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: white;
+    /*background-image: linear-gradient(260deg, #30CBE8  0%, #FFB000 100%);*/
+  }
+
+/* some styling for the links */    
+
+a {
+    color:white;
+    text-decoration: none;
+    background:rgba(0,0,0,0.2);
+    padding:20px 10px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    
+  }
+  
+  a:hover {
+    background:rgba(0,0,0,0.3);
+  }
+
+
+/*  put a wrapper around just to constrain the width of the navigation - */
+/*  the wrapper only becomes a flex container when on a smaller screen size*/
+.wrapper {
+    max-width: 1000 px;
+    margin: 0 auto;
+    padding:50px;
+
+    /*  I have made this a flex container again....*/
+    display:flex;
+    flex-direction: column;
+  }
+
+/* HEADER AND NAV SECTION  */
+
+header{
+    background-image: linear-gradient(to right bottom, #30CBE8 ,#FFB000);
+    border-radius: 10px;
+}
+
+.logo {
+    height: 4.75rem;
+    border-radius: 10%;
+    border: 2px solid #FFBF30;
+  
+    margin-left: 1rem; }
+
+/* make the nav list a flex container  */
+.navbar ul {
+    border:3px solid black; /* just for now to see */
+    list-style: none; /* take away the bullets */
+    margin: 0;
+    padding: 0;
+    display:flex;
+  }
+  
+  /* the list items are flex items (as the children of the ul flex container) 
+  want to give less room to the social icons when required*/
+  .navbar li {
+    flex:3;
+  }  
+  .navbar .social {
+    flex:1;
+  }
+
+
+/*  media queries for different size screens*/  
+  @media all and (max-width:1000px) {
+    
+    .navbar ul {
+      flex-wrap:wrap;
+    }
+  
+    .navbar li {
+      flex:1 1 50%;
+    }
+/* let the items grow and shrink at same rate but give social icons less of the space */  
+    .navbar .social {
+      flex:1 1 25%;
+    }  
+  }
+  /*  let the links take up all the width for small screens*/
+  @media all and (max-width:500px) {    
+    .navbar li {
+      flex-basis:100%;
+    }  
+  }
+
+
+  /* Create two unequal columns that sits next to each other */
+  /* Sidebar/left column */
+  .side {
+    display:flex;
+   
+    flex:25%;
+    background-color:#fff;
+    padding: 20px;
+    border: 5px solid #FFBF30;
+    
+   
+  }  
+/* Main column */
+.main {
+  flex: 75%;  
+  background-color: #fff;
+  border: 5px solid #02A2C0;
+  
+  
+  padding: 20px;
+
+}
+
+
+
+section {
+    text-align: center;
+    background:whitesmoke;
+    padding:20px;
+    margin:20px 0;
+    color:white;
+    font-weight: 100;
+  }
+
+
+  input {
+    padding:10px;
+    border:0;
+  }
+
+
+
+
+
+footer {
+    /* dont need to see display:flex here - it push the contents to the left */
+    display:flex;
+    padding: 5px;
+    text-align: flex-start;
+    /*background: #a64ac9; */
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+  
+    color:#fff;
+    font-size: 1.5em;
+   
+    /*border-width: 1px 5px 5px 5px;*/
+  background-color:#02A2C0;
+  min-height: 10vh;
+  padding: 0% 5%;
+
+  
+  
+}
+
+
+
+/*  COME BACK TO THIS LATER -LEAVE AT THE BOTTOM */
+/* Following what the flexbox tutorial on resizing for smaller screens */
+
+@media all and (max-width:500px) {
+  
+    .navbar li {
+      flex-basis:100%;
+    }
+     
+    /* make wrapper a flexible container and use columns instead of row */
+    .wrapper {
+      display:flex;
+      flex-direction:column;
+    }
+  
+    /* Reorder items - can change this to any number once it is higher than then ones you want ordered first*/
+    .wrapper > * {
+      order:100;
+    }
+
+    
+    
+    /* Nav - maybe not have this take up so much space */
+    .navbar {
+      order:1;
+    }
+
+    /* Details */
+    .details {
+      order:3;
+    }
+  
+    /* register form - move it to a page of its own */
+    .register {
+      order:4;
+    }
+  
+  }
+  
+
