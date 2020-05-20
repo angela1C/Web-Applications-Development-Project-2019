@@ -19,9 +19,6 @@ li,button, label,input{
 
 html{
 
-  background-image: linear-gradient(to right bottom, #30CBE8 ,#FFB000);
-  background-size: cover;
-  background-repeat: no-repeat;
   min-height: 100vh; 
 }
  
@@ -29,6 +26,7 @@ html{
   /* Style the body */
 body {
     font-family: roboto;
+    background-color: linear-gradient(to right bottom, #30CBE8 ,#FFB000);
    
 
   }
@@ -60,8 +58,11 @@ PROBABLY NOT NECESSARY FOR THE PROJECT BUT SEEMS TO BE THE DONE THING
 /* header */
 header, main-header{
   color:#FFBF30;
-  width:95%;
-  background-color: #fff;
+  width:98%;
+ background-color: #30CBE8 ;
+ background: linear-gradient(180deg,#30CBE8 , #87E2F3, #57D6ED, #08BEE0, #02A2C0);
+ /*background-color: linear-gradient(260deg, #30CBE8 0%, #FFB000 100%); */
+  
   margin: auto;
   display:flex;
   padding:5px;
@@ -82,7 +83,7 @@ header, main-header{
   
   nav, .navbar ul{
     display:flex;
-    border:1px solid black;
+   
     list-style: none;
     display: flex;
     margin: 0;
@@ -92,7 +93,7 @@ header, main-header{
     
     min-height: 12vh;
     width: 50% ;
-    background-color: #02A2C0;
+    background-color: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
 
     flex:1;
     }
@@ -114,8 +115,8 @@ header, main-header{
     flex-direction: column;  /* want the pic on top */
     
     margin: 1rem;
-    border:2px solid red;
-    padding: 5px;
+    
+    padding: 2px;
     
 
 
@@ -195,33 +196,25 @@ a:hover {
   .wrapper {  
 
     display: flex;
-    flex:98%;
+    flex:100%;
     flex-wrap: wrap;
-    
-    max-width: 100rem;
-   
-  }
+    justify-content: center;
+    text-align: center;
   
-  /* Create two unequal columns that sits next to each other */
-  /* Sidebar/left column */
-  .side {
-
-    /* This is a flex container in columns, takes up 25% compared to the main panel */
-    display:flex;
-   
-    flex:25%;
-    background-color:#fff;
-    padding: 20px;
-    border: 5px solid #FFBF30;
     
+    max-width: 100%;
    
   }
   
   /* Main column */
-  .main {
-    flex: 75%;  
+  main {
+  
     background-color: #fff;
-    border: 5px solid #02A2C0;
+    border: none;
+    align-items: center;
+    flex: 100%;
+    
+    
     
     
     padding: 20px;
@@ -229,13 +222,17 @@ a:hover {
   }
 
   section {
+
+    
+    flex-direction: column;
+    border: none;
+    
     text-align: center;
-    background:whitesmoke;
-    padding:20px;
-    margin:20px 0;
-    color:white;
-    font-weight: 100;
+    background-color: inherit;
+    overflow:scroll;
+
   }
+  
 
   .gradient-text2 {
     font-size: 4vw;
@@ -245,8 +242,8 @@ a:hover {
     background: linear-gradient(to right, rgba( 48,203,232,1), rgba(255,191, 48,1) );
     background-clip: text;
     
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent; 
 }
   
   
@@ -257,32 +254,96 @@ color: linear-gradient(260deg, #30CBE8  0%, #FFB000 100%);
 
 
 .gradient-text {
-    background-color: #f3ec78;
+    
     background-image: linear-gradient(to left, rgba( 48,203,232,1), rgba(255,191, 48,1) );
-    background-image: conic-gradient(#30CBE8,#FFBF30);
+    
     background-size: 100%;
-    background-clip: text;
+    
  
 }
 
+/*   project boxes */
 
-  
-  /* a colour block to fill space!*/
-  .colourblock {
-    background-color: inherit;
-    width: 100%;
-    padding: 20px;
-  }  
-  .colours{
-    padding:20px;
-  }
-  
+.box_container{
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:row;
 
-rect:hover{fill:black;}
+  height: 30 vh;
+}
+
+.box {
+  flex-basis: 250px;
+  flex-grow: 1;
+  padding: 5px;
+  margin: auto;
+  align-items: baseline;
+}
+
+.box1{
+  border:none;
+}
+
+.box2 {
+  border: none;
+}
+
+.box3 {
+
+  flex-grow: 5;
+}
+
+.box4 {
+  flex-basis: 100px;
+
+}
+
+.box5 {
+  background: #f1c40f;
+}
+
+/* ---------------------------- DOM STYLING DEMO ONLY --------------- */
+/* for changes.html only */ 
+/* for showing accessing and changing styling using the  DOM */
+
+
+.BoxcontainerDemo {
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:row;
+  justify-content: center;
+  border:none;
+  
+}
+
+.boxDemo {
+  
+  padding: 5px;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* for showing accessing and changing styling using the  DOM */
+#boxa { background: seashell;
+flex: 50%;}
+
+#boxb { background:#30CBE8;
+flex:50%;}
+
+#boxc { background:#30CBE8;
+flex: 0%;}
+#boxd { background:seashell;
+flex:0%;}
+#boxe { background:#dac46c;}
+#boxf { background:#dad747;}
+
+/* for changes.html only */ 
+/* for showing accessing and changing styling using the  DOM */
+/* ---------------------------- DOM STYLING DEMO ONLY --------------- */
 
   /* for the svg demo */
   .svgdemo{
-    padding:20px;
+    padding:1px;
   }
 
 /* a div id to change colour */
@@ -295,12 +356,35 @@ rect:hover{fill:black;}
 
 #svgdemo{
   
-  height:300px;
-  background:#f5f5f4;
-  width:100%;
+  /*height:300px; */
+  background:whitesmoke;
+  /*width:100%;*/
   padding:30px;
   border-radius: 20px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  .colours{
+    padding:20px;
+  }
+  
+
+rect:hover{fill:black;}
+
+
 
 
   .highlight{
@@ -318,7 +402,7 @@ footer{
     display:flex;
     padding: 5px;
     text-align: flex-start;
-    /*background: #a64ac9; */
+   
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
@@ -327,11 +411,12 @@ footer{
     font-size: 1.5em;
    
     /*border-width: 1px 5px 5px 5px;*/
-  background-color:#02A2C0;
+    background-color: #30CBE8 ;
+    background: linear-gradient(#30CBE8 , #87E2F3, #57D6ED, #08BEE0, #02A2C0);
   min-height: 10vh;
   padding: 0% 5%;
 
-  
+
   
   }
 
@@ -350,4 +435,86 @@ footer{
 
   
 
+/* ----------------------------- FORM STYLING --------------------------------- */
+
+
+
+form{
+  /** make this flexbox so children are flex items */
+
+  display: flex;
+  /*lay children out vertically*/
+  flex-direction: column;
+
+  /* keep children grouped together in the center */
+  justify-content: center;
+
+  /* align along center of the column */
+ 
+  align-items: center;
+
+  min-height: 300px;
+  padding: 10px;
+  background-color: whitesmoke;
+}
+
+/* styling buttons */
+button{
+  background-color: #30CBE8;
   
+  display:inline-flex;
+  font-size: 16px;
+  margin: 4px 2px;
+
+  color: white;
+  cursor: pointer;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  align-self: center;
+
+
+}
+
+/*   a flexible container for cards at the bottom of the page, can be used for pricing, packages images etc */
+
+.card-container {
+  display: flex;
+  
+  overflow: hidden;
+  background-color:whitesmoke;
+
+  
+}
+
+  .card {
+    background-color:transparent;
+    flex: 1 1 0%;
+    
+
+    border: none;
+    border-radius: 5%;
+    padding: 1%;
+  }
+
+
+
+  .cardDescription {
+    color:black;
+    padding:10px;
+    /*flex-basis is auto so size of content determines the size */
+    flex: 1 0 auto;
+  }
+
+
+
+/*  flex 1 1 0%
+flex grow 1 to expand and fill its container, 
+flex-shrink to 1 so the element will shrink as the container gets smaller
+if flex-basis to 0, its size is determined only by the size of the container. 
+The default value for flex-basis is auto, This make the size of the content be a factor in the size 
+Flex makes a fluid size which expands and shrinks with its container and siblings, 
+They will all have the same size, even if they have different amounts of content. */
+  
+    

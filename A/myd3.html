@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Trying out D3</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    
+    
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <style type="text/css">
+/* adapting from W3schools flex box layout */
+
+/* using border box to keep sizes of boxes consistent - padding and borders are included */
+* {
+  box-sizing: border-box;
+}
+
+
+/* Style the body */
+body {
+  font-family: roboto;
+  margin: 0;
+}
+
+/* settings for the header */
+.header {
+  padding: 20px;
+  text-align: center;
+  background:#a64ac9;
+  color: white;
+  font-size: 1.5em;
+}
+
+/* Styling the navigation bar at the top of the page */
+/* make the nav bar a flex container with its direct children being flex items */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#fccd04; /*change the colour scheme later! */
+  
+  }
+
+/* Styling the navigation bar links */
+.navbar a {
+  color:lightcyan;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+/* Change color on hover  - just picking random colours for now*/
+.navbar a:hover {
+  background-color:violet;
+  color:springgreen;
+}
+
+/* Column container */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 15%;
+  background-color:#f5e6cc;
+  padding: 35px;
+}
+
+/* Main column */
+.main {
+  flex: 70%;
+  
+  padding: 20px;
+}
+
+/* a colour block */
+.colourblock {
+  background-color:inherit;
+  width: 100%;
+  padding: 20px;
+}
+
+.footer{
+  padding: 30px;
+  text-align: center;
+  background: #a64ac9;
+
+}
+
+path {
+	fill: none;
+	stroke: #999;
+}
+
+
+circle {
+  fill: #ddd;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+
+    <!-- the Header -->
+<div class="header">
+    <h1>Learning about D3</h1>
+   
+    
+  </div>
+  
+
+    <!-- Navigation Bar -->
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="alice_home.html">Alice</a>
+    <a href="dedom.html">DOM Styling</a>
+    <a href="flexbox-gallery.html">Gallery</a>
+    <a href="login.html" style="float:right;">Login</a>
+  
+  </div>
+
+<!-- The flexible grid (content) -->
+
+<div class="row">
+    <!-- side bar is left side of main -->
+    <div class="side">
+      <h2>About Me</h2>
+      <h5>Photo of me:</h5>
+    
+
+
+      <p>Finding nice colour combo to try</p>
+      <h3>More Text</h3>
+      <p>#a64ac9 purple, fccd04 mustard, #ffb48f salmony, #f5e6cc beige</p>
+ 
+      <div class="fakeimg" style="height:60px;">Image</div><br>
+    
+    <!-- end div class "side"-->
+    </div>
+
+
+<div class="main">
+  
+  
+  <p>Web Application Development Project</p>
+  
+<h1>Learning D3</h1>
+
+
+<div id="div1">
+    div1
+</div>
+
+<div>
+
+	<svg width="600" height="100">
+		<path transform="translate(200, 0)" />
+    </svg>
+    
+    <script src="//d3js.org/d3.v4.min.js"></script>
+
+
+</div>
+
+<div><h3> learning d3 visualisations</h3></div>
+<div id="svgdemo">
+    
+    <button id="myBtn">Generate random radius values for making circles</button>
+    <button id="myBtn2">colour every odd circle purple</button>
+    
+    <p> The array generated is as follows:</p>
+    <p id="arr">
+      Result
+      
+    </p>
+
+  </div>
+
+  <div id="svg2">
+    <p> svg here</p>
+  
+  </div>
+
+ 
+  <div id="svg3">
+
+  </div>
+
+</div>
+
+
+<!-- end div class=main-->
+</div>
+<!-- end div class=row-->
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <h2>Footer</h2>
+</div>
+</body>
+
+
+<script>
+//d3.select("body").transition().style("background-color", "lightblue");
+
+
+/* add an event listener that fires when the user clicks a button
+This generates an array of 10 random numbers, then prints out the random array
+*/
+document.getElementById("myBtn").addEventListener("click", makeCirclesR);
+
+
+// function to generate an array of random numbers between 1 and 20 inclusive
+function makeCirclesR(){
+
+   //remove existing svg elements before creating new ones
+  d3.select("#svg2").selectAll("*").remove();
+ 
+  // create an empty array
+  var myArray = [];
+  // want 10 random numbers
+  while (myArray.length < 10){
+    // round down using floor function, random generates number between 0 and 1
+    var rand = Math.floor(Math.random()*30)+1;
+    // push the random numbers into the array
+    myArray.push(rand);
+
+  
+// send the values of the array to the element with if "arr"
+  document.getElementById("arr").innerHTML=myArray;
+}
+   //var arr2=  document.getElementById("arr").innerHTML;
+
+
+   let svgContainer = d3.select("#svg2").append("svg")
+            .attr("height",200)
+            .attr("width",1000);
+
+ 
+
+            
+
+    let myCircles = svgContainer.selectAll("circle")
+    
+                .data(myArray);
+                
+                myCircles.enter()
+                .append("circle")
+    // add a gap between each circle using an anonymous function
+    // determine where each circles appears in the svg container using the index of each value in the array
+        .attr("cx", function(d,i){return 50 + (i * 50);})
+        .attr("cy",40)
+        .attr("stroke","white")
+        // determine the radius of each circle using the values of the data in the array d
+        .attr("r",function(d){return d;})
+        .attr("fill", "blue")
+        // function to change clicked circle to orange using this to bind the variable to the DOM element
+        .on('click', function(d, i) {
+         d3.select(this)
+        .style('fill', 'orange');
+        })
+
+        
+        // function to colour every second circle pink
+        .filter(  function(d, i) {
+            return i % 2 === 0;
+        })
+        .style('fill', 'pink');
+
+        /*
+       
+
+        d3.selectAll('circle')
+        // .each allows a function to be called on each element of a selection
+        .each(function(d, i) {
+      // to select every odd indexed element
+        var odd = i % 2 === 1;
+
+        d3.select(this)
+            .style('fill', odd ? 'orange' : '#ddd')
+            .attr('r', odd ? 40 : 20);
+        });
+
+        */
+        
+ };      
+  
+/* add an event listener that fires when the user clicks a button
+
+*/
+document.getElementById("myBtn2").addEventListener("click", colorPurple);
+
+function colorPurple(){
+ d3.selectAll('circle')
+        // .each allows a function to be called on each element of a selection
+        .each(function(d, i) {
+      // to select every odd indexed element
+        var odd = i % 2 === 1;
+
+        d3.select(this)
+        // if odd colour purple, else colour 
+            .style('fill', odd ? 'purple' : '#fccd04');
+            
+        });
+
+};
+
+d3.select("body").style("background-color", "lightblue") 
+         // make the background-color lightblue.transition()
+         .transition().style("background-color", "#f5e6cc;").delay(2000).duration(5000);
+         // make the background-color 
+
+
+
+
+d3.selectAll("h3").transition().style("color","rgb(0,150,120)").delay(2000).duration(2000);
+
+
+let svgContainer3 = d3.select("#svg3").append("svg")
+            .attr("height",200)
+            .attr("width",1000);
+
+var group = svgContainer3.append("g").attr("transform","translate(60,60) rotate(60)");
+
+var rect = group
+    .append('rect')
+    .attr("x",10)
+    .attr("y",10)
+    .attr("width",100)
+    .attr("height",30)
+    .attr("fill","yellow")
+    
+var circle = group
+  .append("circle")
+  .attr("cx", 0)
+   .attr("cy", 0)
+   .attr("r", 30)
+   .attr("fill", "red")
+
+</script>
+
+
+</html>

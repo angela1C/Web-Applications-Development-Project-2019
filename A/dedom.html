@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dom Styling</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+</head>
+<body>
+    
+
+    <!-- the Header -->
+<div class="header">
+    <h1>Welcome to my website</h1>
+    
+  </div>
+  
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="alice_home.html">Alice</a>
+      <a href="dedom.html">DOM Styling</a>
+      <a href="flexbox-gallery.html">Gallery</a>
+      <a href="login.html" style="float:right;">Login</a>
+    
+    </div>
+
+<!-- The flexible grid (content) -->
+
+<div class="row">
+    <!-- side bar is left side of main -->
+    <div class="side">
+      <h2>About Me</h2>
+      <h5>Photo of me:</h5>
+      <div><img src="img/rocco.jpg" style="width:80%"></div>
+    
+      <div id="side-colour">
+
+      <p>Finding nice colour combo to try</p>
+      <p> testing different colour combinations</p>
+      <p> give it a go!</p>
+      <button onclick="changeBackgroundSide()">Change Background</button>
+      <h3>More Text</h3>
+      <p>#a64ac9 purple, fccd04 mustard, #ffb48f salmony, #f5e6cc beige</p>
+    </div>
+   
+    
+     
+    </div>
+
+
+
+<div class="main">
+ 
+  <p>Web Application Development Project</p>
+  
+  <p id="para"> Demonstrating accessing changing HTML on the web page through the DOM    </p>
+  <button onclick="change2()">Change me</button>
+  <p>Need to demonstrate the use of events</p>
+
+  
+
+  <div>
+
+        <input id="input1">
+        <button onclick="myName()">Check Name</button>
+            
+        <h2 id="result"></h2>
+  </div>
+  
+
+  <div>
+
+    <h1 id="one">Something else to change!.</h1>
+    <button onclick="change()">Change me to red</button>
+   
+    <div id="change-background">
+    <button onclick="changeBackground()">Change Background</button>
+    <p> Some text here and some more text</p>
+    <p> some more text</p>
+
+    </div>
+
+  </div>
+  <div>
+    <img id="myImg" src="img/smile.jpg" width="100" height="100">
+    <button onclick="changeImage()">Change image</button>
+
+
+  </div>
+ 
+<div id="div1">
+
+  <p> Hello div1</p>
+</div>
+
+  <div id="colours">
+    <h2> Select the your favourite colours from the colour selectors below</h2>
+   
+    <h2> And change the background colour to your chosen colour!</h2>
+    <p id="selectedcolour"></p>
+    <!-- Select the colour from the colour wheel-->
+    <p> Select a colour for the background
+    <input type="color" id="backgroundcolour" name="background colour" value="#a64ac9"><br> </p>
+    <p>select a colour for the font
+      <input type="color" id="fontcolour" name="fontcolour" value="#f5e6cc">
+    </p>
+    <button onclick="changeColour()">Click the button to see the colours selected...</button>
+
+  </div>
+
+  
+
+
+  <div>
+
+    
+  </div>
+
+
+  <script>
+
+  </script>
+
+</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+</body>
+</html>
+<script>
+
+// add an event listener that fires when the user clicks a button
+document.getElementById("myBtn").addEventListener("click", fillArray);
+
+// function to generate an array of random numbers between 1 and 20 inclusive
+function fillArray(){
+  // create an empty array
+  var myArray = [];
+  // want 10 random numbers
+  while (myArray.length < 10){
+    // round down using floor function, random generates number between 0 and 1
+    var rand = Math.floor(Math.random()*10)+1;
+    // push the random numbers into the array
+    myArray.push(rand);
+  }
+  // send the values of the array to the element with if "arr"
+  document.getElementById("arr").innerHTML=myArray;
+}
+
+document.getElementById("myBtn2").addEventListener("click", makeCircles);
+
+
+function makeCircles(){
+  // get the array values from id "arr"
+  var getcir = document.getElementById("arr").innerHTML;
+  
+  // create an empty array
+  var circlesR = [];
+  // append values to array
+  circlesR.push(getcir)
+  // check if it is an array
+  var x=document.getElementById("yesno");
+  x.innerHTML = Array.isArray(circlesR);
+  var myarray = [5,10,12,13,14];
+ 
+    
+  alert(myarray);
+  alert(circlesR);
+
+  let svgContainer = d3.select("#svgdemo").append("svg")
+    .attr("height",1000)
+    .attr("width",1000);
+
+  //get all the circles on the screen that will exist in this container
+let circles = svgContainer.selectAll("circles")
+// associate the array using the .data() method
+    .data(myArray);
+
+    circles.enter()
+    .append()
+        .attr("cx", 40)
+        .attr("cy",40)
+        .attr("r",50)
+        .attr("fill", "blue");
+}
+
+/*
+document.getElementById("myBtn2").addEventListener("click", makeCircles);
+//function to make the circles using the array of values for the radius
+function makeCircles(){
+
+  var circlesR = [];
+  // return the values 
+  var getcir = document.getElementById("arr");
+  circlesR.push(getcir);
+  var x=document.getElementById("yesno");
+  x.innerHTML = Array.isArray(circlesR);
+
+
+/*  
+  let svgContainer = d3.select("#svgdemo").append("svg")
+    .attr("height",1000)
+    .attr("width",1000);
+
+    let circles = svgContainer.selectAll("circles")
+    .data(circlesR);
+
+    // iterate through all the circles
+circles.enter()
+    .append("circle")
+    // determine where each circles appears in the svg container using the index of each value in the array
+        .attr("cx", function(d,i){return 50 + (i * 50);})
+        .attr("cy",20)
+        // determine the radius of each circle using the values of the data in the array d
+        .attr("r",function(d){return d;})
+        .attr("fill", "blue");
+}
+
+
+/*
+  let svgContainer = d3.select("#svgdemo").append("svg")
+    .attr("height",1000)
+    .attr("width",1000);
+
+  let circles = svgContainer.selectAll("circles")
+    .data(circlesR);
+// iterate through all the circles
+circles.enter()
+    .append("circle")
+    // determine where each circles appears in the svg container using the index of each value in the array
+        .attr("cx", function(d,i){return 50 + (i * 50);})
+        .attr("cy",20)
+        // determine the radius of each circle using the values of the data in the array d
+        .attr("r",function(d){return d;})
+        .attr("fill", "blue");
+}
+*/
+
+
+
+
+
+
+ 
+
+
+function changeColour() {
+  // select the value of the colour selected
+  var bkgdcolour = document.getElementById("backgroundcolour").value;
+  var fontcolour = document.getElementById("fontcolour").value;
+
+  
+  document.getElementById("selectedcolour").innerHTML = "You selected the colour " +bkgdcolour +" for the background colour and "+fontcolour +" for the font colours."; 
+  // change the background with the selected colour
+  var mydiv = document.getElementById("colours");
+  var mycolourblock = document.getElementById("mycolourblock");
+ 
+  // use the colour selected to change the background
+  mydiv.style.background =bkgdcolour;
+  mydiv.style.color=fontcolour;
+
+}
+
+
+   function myName(){
+        var y = document.getElementById("input1").value;
+        document.getElementById("result").innerHTML = "Hello " +y; 
+        document.getElementById("result").style.color ="red";
+   }
+
+
+function change(){
+    document.getElementById("one").style.color ="red";
+}
+
+function changeBackground(){
+    document.getElementById("change-background").style.background ="yellow";
+}
+
+function changeBackgroundSide(){
+    var mydiv= document.getElementById("side-colour");
+    mydiv.style.background ="#ffb48f ";
+    mydiv.style.color="#f5e6cc";
+    mydiv.style.fontSize="1.5em";
+    
+}
+
+function change2(){
+    var par=document.getElementById("para");
+        par.style.background="lightgreen";
+        par.style.border="3px dashed red";
+        par.style.fontFamily="Arial";
+        par.style.boxShadow="10px 20px 30px grey";
+
+    }
+
+    function changeImage() {
+  document.getElementById("myImg").src = "img/sadface.jpg";
+}
+
+
+
+
+</script>

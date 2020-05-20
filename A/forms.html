@@ -5,7 +5,7 @@
 	<head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>index_A</title>
+	<title>Login_Form</title>
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  
@@ -33,7 +33,7 @@
         <li><a href="projects.html">Projects</a></li>
         <li><a href="Changes.html">More Dom Styling</a></li>
         <li><a href="flexbox-gallery.html">Gallery</a></li>
-        <li><a href="forms.html">Login</a></li>
+        <li><a href="loginA.html">Login</a></li>
         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
         <li class="social">
           <a href="#"><i class="fa fa-github"></i></a>
@@ -52,65 +52,54 @@
 
 <!-- A flexible container -->
 
-<div class="wrapper">
+
 
 <main class="main">
 
 
 
   
-  <h1 class="gradient-text2">Experiment</h1>
+
  
   
   
 
 
-
-<div class="wrapper box_container">
+  <div class="wrapper box_container">
   
 
-  <div class="box box1">
-    <form>
-      <label for="search">Search:</label>
-  
-  
-      <input type="search" tabindex="1" name="search" id="search">
-      <input type="submit" tabindex="2" name="submit" value="Submit" id="submit">
-  
-  
-    </form>
-
-
-  </div>
   <div class= "box box2">
-    <form>
-      <label for="search">Search:</label>
-  
-  
-      <input type="search" tabindex="1" name="search" id="search">
-      <input type="submit" tabindex="2" name="submit" value="Submit" id="submit">
-  
-  
-    </form>
-  
-  </div>
+    <form id="existing_users_login" class=".prompt">
+        <h2 class="gradient-text2">Login</h2>
+       
+       
+        <!-- label tag defines a label for form element, useful for screen readers and also for users having difficulty clicking on very small regions-->
+            
+           
+           <!-- username details   can use placeholder=""-->
+           <label for="username"></label>
+           <input type="text" tabindex="0" id="username" name="username" size="30" required  autofocus  placeholder="Enter a valid username"><br>
+           <!-- using dom query here -->
 
-  <div class="box box4">
-    
-    <!--<p class="gradient-text2">Another project</p>-->
-  
-    <form>
-      <label for="search">Search:</label>
-  
-  
-      <input type="search" tabindex="1" name="search" id="search">
-      <input type="submit" tabindex="2" name="submit" value="Submit" id="submit">
-  
-  
+           <label for="email"></label><br>
+           <input type="email" name="email" required placeholder="Enter a valid email address" size="30"><br>
+
+           <label for="pwd">Password:</label><br>
+           <input type="password" id="pwd" name="pwd" size="30" required autofocus><br>
+                  
+           <input type="submit" value="Submit">  
+                 
+           <input type="reset">
+                   
     </form>
   
-  
-  </div>
+
+
+
+
+
+
+</main>
 </div>
 
 
@@ -177,5 +166,9 @@
 </html>
 
 
+<script>
 
+
+document.getElementById("username").addEventListener("mouseover", login);
+</script>
 

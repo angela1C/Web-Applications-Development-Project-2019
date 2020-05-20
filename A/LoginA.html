@@ -1,0 +1,111 @@
+<!doctype html>
+
+<!-- working with style.css file-->
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login_A</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ 
+  <link type="text/css" rel="stylesheet" href="css/style_A.css"/>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+</head>
+<body>
+
+    <!-- the Header -->
+<header class="main-header">
+  <!-- class navlogo is a flex container while class logo are the child items-->
+    <div class="navlogo"><img src="img/rocco.jpg" alt="logo" class="logo">
+    <h2>rocco</h2>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <ul>
+        <li><a href="indexA.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="dedom.html">DOM Styling</a></li>
+        <li><a href="flexbox-gallery.html">Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+        <li class="social">
+          <a href="#"><i class="fa fa-github"></i></a>
+        </li>
+      
+      </ul>      
+    </nav>
+
+    
+</header>
+  
+<!-- The flexible grid (content) -->
+
+<div class="wrapper">
+  
+<main>
+
+<section>
+  <h5>Please enter your email and password below</h5> 
+  
+
+    <div class="prompt">
+     
+   <!-- give the form an id-->
+
+      <form id="existing_users_login" class=".prompt">
+        <h2>Login</h2>
+        <h5>Please enter your email and password below</h5> 
+       <p>Please enter your username: 
+        <!-- label tag defines a label for form element, useful for screen readers and also for users having difficulty clicking on very small regions-->
+           <input type="image" src="img/img_submit.gif" alt="Submit" width="30" height="30">  
+           
+           <!-- username details   can use placeholder=""-->
+           <label for="username">Username:</label><br>
+           <input type="text" id="username" name="username" size="50" required  autofocus  placeholder="Enter a valid username"><br>
+           <!-- using dom query here -->
+           <button onclick="myName()">Check Name</button>
+           <label for="email">Email</label><br>
+           <input type="email" name="email" required placeholder="Enter a valid email address"><br>
+           <label for="pwd">Password:</label><br>
+           <input type="password" id="pwd" name="pwd" size="16" required autofocus><br>
+                  
+           <input type="submit" value="Submit">  
+                 
+           <input type="reset">
+                   
+           </form>
+
+
+
+    </div>
+  
+ 
+  </section>
+
+
+</main>
+
+</div> <!-- -->
+<!-- end wrapper container div-->
+
+
+
+<!-- Footer -->
+<footer class="footer">
+  <h5>&copy;Angela 2020</h5>
+  <a href="#"><i class="fa fa-instagram"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-github"></i></a>
+
+</footer>
+
+</body>
+</html>
+
+
+
+

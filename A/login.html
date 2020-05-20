@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login Page</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link type="text/css" rel="stylesheet" href="css/style_A.css"/>
+
+</head>
+<body>
+
+    <!-- the Header -->
+<div class="header">
+    <h1>Welcome to my website</h1>
+    <h5>Under construction!</h5>
+    
+  </div>
+  
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="alice_home.html">Alice</a>
+      <a href="dedom.html">DOM Styling</a>
+      <a href="myd3.html">D3 visualisations</a>
+      <a href="flexbox-gallery.html">Gallery</a>
+      <a href="login.html" style="float:right;">Login</a>
+    
+    
+    </div>
+
+<!-- The flexible grid (content) -->
+
+<div class="row">
+    <!-- side bar is left side of main -->
+    <div class="side">
+      <h2>About Me</h2>
+      <h5>Photo of me:</h5>
+  
+    
+     
+    </div>
+
+
+<div class="main">
+  <h2>Login</h2>
+   <h3>Existing Users</h3> 
+  <p>Please enter your username:
+    <!-- give the form an id-->
+  <form id="existing_users_login"> 
+<!-- label tag defines a label for form element, useful for screen readers and also for users having difficulty clicking on very small regions-->
+    <input type="image" src="img/img_submit.gif" alt="Submit" width="30" height="30">  
+    
+    <!-- username details   can use placeholder=""-->
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" size="50" required  autofocus  placeholder="Enter a valid username"><br>
+    <!-- using dom query here -->
+    <button onclick="myName()">Check Name</button>
+    <label for="email">Email</label><br>
+    <input type="email" name="email" required placeholder="Enter a valid email address"><br>
+    <label for="pwd">Password:</label><br>
+    <input type="password" id="pwd" name="pwd" size="16" required autofocus><br>
+           
+    <input type="submit" value="Submit">  
+          
+    <input type="reset">
+            
+    </form>
+
+    <h2>Welcome</h2>
+    <h2 id="result"></h2>
+
+
+
+
+
+
+
+
+  
+    <h3>New Users can register here</h3>
+    <p>We just need a few details first</p>
+    <form action="form_action.html" id="new_users" method=POST>
+        <!--for attribute equal to the id attribute of the input element to bind them together-->
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" value="Minnie" size="50"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="Mouse" size="50"><br><br> 
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label><br><br>
+
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday"><br><br>
+
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="datemax">Enter a date before 1980-01-01:</label>
+        <input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>
+        <label for="datemin">Enter a date after 2000-01-01:</label>
+        <input type="date" id="datemin" name="datemin" min="2000-01-02">
+        
+        <h3>Interests</h3>
+        <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+
+        <form action="/action_page.php">
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1"> I have a bike</label><br>
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+        <label for="vehicle2"> I have a car</label><br>
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+        <label for="vehicle3"> I have a boat</label><br><br>
+        <input type="submit" value="Submit">
+
+        <input list="browsers">
+        <datalist id="browsers">
+            <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari">
+          </datalist>
+          <input type="submit" value="Submit">
+        <h2>Input Button</h2>
+
+        <input type="button" onclick="alert('Hello World!')" value="Click Me!"><br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset">
+</form> 
+
+<!-- input field outside of the form can still be part of the form - using the form id-->
+<label for="favcolor">Select your favorite color:</label>
+<input type="color" id="favcolor" name="favcolor" form="new_users"><br> 
+<input type="submit" value="Submit">
+
+
+
+
+    </form>
+
+
+
+ 
+</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+</body>
+</html>
+
+<script>
+function myName(){
+        var y = document.getElementById("username").value;
+        document.getElementById("result").innerHTML = "Hello " +y;  
+
+}
+</script>
