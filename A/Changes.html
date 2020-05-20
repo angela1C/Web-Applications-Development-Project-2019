@@ -25,13 +25,13 @@
     <!--nav bar is a flex container, while the links are flex items -->
     <nav class="navbar">
  <!-- class navlogo is a flex container while class logo are the child items-->
-      <div class="navlogo"><img src="img/rocco.jpg" alt="logo" class="logo">
+      <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
         </div>
       <ul>
         <li><a href="IndexA.html" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="Dom_stylingA.html">DOM Styling</a></li>
+        <li><a href="#" class="active">DOM Styling</a></li>
         <li><a href="flexbox-gallery.html">Gallery</a></li>
         <li><a href="forms.html">Login</a></li>
         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
@@ -121,7 +121,7 @@
         <p>Click the button to change the value of the src attribute of the image.</p>
         <img id="myImg" src="img/smile.jpg" width="107" height="98">
             
-            <button onclick="changeImage()">Try it</button>
+            <button class="button5" onclick="changeImage()">Try it</button>
             <button onclick="changeBack()">Change back</button>
 
 
@@ -139,7 +139,7 @@
         <h2 id="demo3">Changing Styles with the DOM</h2>
           
           <h2 id="demo2"> Change this text!!!</h2>
-          <button onclick="changeFont()">Change the Font</button>
+          <button class="button" onclick="changeFont()">Change the Font</button>
           <button onclick="changeFontColour()">Change the Font Colour</button>
           <button onclick="changeFontSize()">Change the Font Size</button>
          

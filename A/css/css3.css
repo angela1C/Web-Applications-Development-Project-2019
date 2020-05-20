@@ -5,6 +5,7 @@ html {
   margin: 0;
   padding: 0;
   font-family: roboto;
+  min-height: 100vh; 
 }
 
 *, *:before, *:after {
@@ -15,12 +16,6 @@ li,button, label,input{
     font-size: 1rem;
   }
 
-/* styling the background using a linear gradient */
-
-html{
-
-  min-height: 100vh; 
-}
  
   
   /* Style the body */
@@ -29,25 +24,7 @@ body {
   padding:0;
     font-family: roboto;
     background-color: linear-gradient(to right bottom, #30CBE8 ,#FFB000);
-   
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -241,7 +218,7 @@ a:hover {
     padding: 20px;
 
   }
-/*
+
   section {
 
     
@@ -253,24 +230,11 @@ a:hover {
     overflow:scroll;
 
   }
-  */
+
   
 /** following creativebloq.com here */
 
-.hero {
-	
-	display:grid;
-	justify-items: center;
-	align-content: center;
-  justify-content: center;
-  
-  background: url("https://images.unsplash.com/photo-1500417148159-68083bd7333a");
-  background-size: cover;
-  background-repeat:no-repeat;
-  background-position: center;
-  
-  height: 100vh;
-}
+
 
 
 /* also https://www.developerdrive.com/full-page-hero-image-html-css/ */

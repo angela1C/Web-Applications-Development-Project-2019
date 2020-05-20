@@ -5,6 +5,7 @@ html {
   margin: 0;
   padding: 0;
   font-family: roboto;
+  min-height: 100vh; 
 }
 
 *, *:before, *:after {
@@ -15,12 +16,6 @@ li,button, label,input{
     font-size: 1rem;
   }
 
-/* styling the background using a linear gradient */
-
-html{
-
-  min-height: 100vh; 
-}
  
   
   /* Style the body */
@@ -29,25 +24,7 @@ body {
   padding:0;
     font-family: roboto;
     background-color: linear-gradient(to right bottom, #30CBE8 ,#FFB000);
-   
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -233,18 +210,12 @@ a:hover {
     background-color: #fff;
     border: none;
     align-items: center;
-    flex: 100%;
-    
-    
-    
-    
+    flex: 100%;  
     padding: 20px;
 
   }
-/*
-  section {
 
-    
+  section {
     flex-direction: column;
     border: none;
     
@@ -253,25 +224,67 @@ a:hover {
     overflow:scroll;
 
   }
-  */
+
   
 /** following creativebloq.com here */
 
 .hero {
 	
-	display:grid;
+	display:flex;
 	justify-items: center;
 	align-content: center;
   justify-content: center;
   
-  background: url("https://images.unsplash.com/photo-1500417148159-68083bd7333a");
+  
+  background: url("../img/treetop.jpg");
+
   background-size: cover;
   background-repeat:no-repeat;
   background-position: center;
   
   height: 100vh;
+  color:white;
 }
 
+.hero-content{
+  position:relative;
+  font-family: Verdana, sans-serif;
+  color:white;
+  text-align: center;
+  margin: 0.625rem;
+}
+
+.hero-title{
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0;
+ 
+}
+
+.hero-subtitle{
+  font-size: 2rem;
+  font-weight: 200;
+  margin-top: 1rem;
+  
+}
+
+
+.hero-button{
+  background-color: #ae2d59;
+  color: white;
+  border: 1px solid #cb376a;
+  margin-top: 5rem;
+  padding: 0.9375rem 1.875rem;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.hero-button:hover{
+  background-color: #cb376a;
+  border: 1px solid #db7598;
+}
 
 /* also https://www.developerdrive.com/full-page-hero-image-html-css/ */
 /* hero section for the picture on the home page */
