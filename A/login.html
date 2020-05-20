@@ -1,168 +1,225 @@
 <!doctype html>
+
+<!-- working with style.css file-->
 <html lang="en">
 	<head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Login Page</title>
+	<title>Login</title>
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  <link type="text/css" rel="stylesheet" href="css/style_A.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ 
+  <link type="text/css" rel="stylesheet" href="css/style.css"/>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
 
 </head>
 <body>
 
-    <!-- the Header -->
-<div class="header">
-    <h1>Welcome to my website</h1>
-    <h5>Under construction!</h5>
-    
-  </div>
+    <!-- the Header is a flex container -->
+<header class="main-header">
   
+
 
     <!-- Navigation Bar -->
-    <div class="navbar">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="alice_home.html">Alice</a>
-      <a href="dedom.html">DOM Styling</a>
-      <a href="myd3.html">D3 visualisations</a>
-      <a href="flexbox-gallery.html">Gallery</a>
-      <a href="login.html" style="float:right;">Login</a>
-    
-    
-    </div>
 
-<!-- The flexible grid (content) -->
-
-<div class="row">
-    <!-- side bar is left side of main -->
-    <div class="side">
-      <h2>About Me</h2>
-      <h5>Photo of me:</h5>
-  
-    
-     
-    </div>
-
-
-<div class="main">
-  <h2>Login</h2>
-   <h3>Existing Users</h3> 
-  <p>Please enter your username:
-    <!-- give the form an id-->
-  <form id="existing_users_login"> 
-<!-- label tag defines a label for form element, useful for screen readers and also for users having difficulty clicking on very small regions-->
-    <input type="image" src="img/img_submit.gif" alt="Submit" width="30" height="30">  
-    
-    <!-- username details   can use placeholder=""-->
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" size="50" required  autofocus  placeholder="Enter a valid username"><br>
-    <!-- using dom query here -->
-    <button class="button" onclick="myName()">Check Name</button>
-    <label for="email">Email</label><br>
-    <input type="email" name="email" required placeholder="Enter a valid email address"><br>
-    <label for="pwd">Password:</label><br>
-    <input type="password" id="pwd" name="pwd" size="16" required autofocus><br>
-           
-    <input type="submit" value="Submit">  
-          
-    <input type="reset">
-            
-    </form>
-
-    <h2>Welcome</h2>
-    <h2 id="result"></h2>
-
-
-
-
-
-
-
-
-  
-    <h3>New Users can register here</h3>
-    <p>We just need a few details first</p>
-    <form action="form_action.html" id="new_users" method=POST>
-        <!--for attribute equal to the id attribute of the input element to bind them together-->
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname" value="Minnie" size="50"><br>
-        <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname" value="Mouse" size="50"><br><br> 
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="male">Male</label>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Female</label>
-        <input type="radio" id="other" name="gender" value="other">
-        <label for="other">Other</label><br><br>
-
-        <label for="birthday">Birthday:</label>
-        <input type="date" id="birthday" name="birthday"><br><br>
-
-        <label for="email">Enter your email:</label>
-        <input type="email" id="email" name="email"><br><br>
-
-        <label for="datemax">Enter a date before 1980-01-01:</label>
-        <input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>
-        <label for="datemin">Enter a date after 2000-01-01:</label>
-        <input type="date" id="datemin" name="datemin" min="2000-01-02">
+    <!--nav bar is a flex container, while the links are flex items -->
+    <nav class="navbar">
+ <!-- class navlogo is a flex container while class logo are the child items-->
+      <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
+        </div>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="Changes.html">DOM Changes</a></li>
+          <li><a href="flexbox-gallery.html">Gallery</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li class="social">
+            <a href="#"><i class="fa fa-github"></i></a>
+          </li>
         
-        <h3>Interests</h3>
-        <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+        </ul>
+       
+      
+    </nav>
 
-        <form action="/action_page.php">
-        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-        <label for="vehicle1"> I have a bike</label><br>
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-        <label for="vehicle2"> I have a car</label><br>
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-        <label for="vehicle3"> I have a boat</label><br><br>
-        <input type="submit" value="Submit">
-
-        <input list="browsers">
-        <datalist id="browsers">
-            <option value="Internet Explorer">
-            <option value="Firefox">
-            <option value="Chrome">
-            <option value="Opera">
-            <option value="Safari">
-          </datalist>
-          <input type="submit" value="Submit">
-        <h2>Input Button</h2>
-
-        <input type="button" onclick="alert('Hello World!')" value="Click Me!"><br><br>
-
-        <input type="submit" value="Submit">
-        <input type="reset">
-</form> 
-
-<!-- input field outside of the form can still be part of the form - using the form id-->
-<label for="favcolor">Select your favorite color:</label>
-<input type="color" id="favcolor" name="favcolor" form="new_users"><br> 
-<input type="submit" value="Submit">
+    
+</header>
+  
 
 
 
+<!-- A flexible container -->
 
-    </form>
 
 
+<main class="main">
+
+
+
+  
 
  
-</div>
-</div>
+  
+  
 
-<!-- Footer -->
-<div class="footer">
-  <h2>Footer</h2>
-</div>
+
+  <div class="wrapper box_container">
+  
+
+  <div class= "box box2">
+    
+<p> Please login below</p>
+<p id="tryagain"></p>
+<form id="existing_users_login" class=".prompt" onsubmit="userlogin()">
+  <h2 class="gradient-text2">Login</h2>
+ 
+ 
+  <!-- label tag defines a label for form element, useful for screen readers and also for users having difficulty clicking on very small regions-->
+      
+     
+     <!-- username details   can use placeholder=""-->
+     <label for="username"></label>
+     <input id="username" type="text" tabindex="0"  name="username" size="30" required  autofocus  placeholder="Enter a valid username"><br>
+     <!-- using dom query here -->
+
+     <label for="email"></label><br>
+     <input id="email" type="email" name="email" required placeholder="Enter a valid email address" size="30"><br>
+
+     <label for="pwd">Password:</label><br>
+     <input id="pwd" type="password" name="pwd" size="30" required autofocus><br>
+            
+     <input type="submit" value="Submit" onclick="userlogin()">  
+           
+     <input type="reset">
+             
+</form>
+
+
+
+
+
+
+
+<h1 id="result"></h1>
+
+
 </body>
 </html>
 
 <script>
-function myName(){
-        var y = document.getElementById("username").value;
-        document.getElementById("result").innerHTML = "Hello " +y;  
 
-}
+  function userlogin(){
+     
+      var validuser="angela";
+      var validEmail ="angela@gmit.com"
+      var validpassword="password123";
+
+      var userEntered = document.getElementById("email").value;
+     
+      var passwordEntered = document.getElementById("pwd").value;
+
+      if (userEntered === "angela" || passwordEntered==="password123"){
+         
+          //location.assign("indexA");
+          window.location.href = "indexA";
+      }else{
+         
+        document.getElementById("result").innerHTML = "incorrect details entered, please try again";
+        
+          window.location.href = "login.html";
+          document.getElementById("tryagain").innerHTML="Please login here";
+          document.getElementById("tryagain").innerHTML = "Hello " +y +" have a nice day now"; 
+      }
+
+   
+     
+      
+      
+
+
+      
+  }
+
 </script>
+
+
+
+
+
+
+</main>
+</div>
+
+
+
+
+
+
+
+<!-- a card group flexible container -->
+  <div class="wrapper card-container">
+    <div class="card">
+      <p> package 1</p>
+      <div class="cardDescription">
+      
+      </div>
+      
+    </div>
+    <div class="card">
+      <div class="cardDescription">
+     
+       <p></p>
+      </div>
+      
+    </div>
+    <div class="card">
+      <div class="cardDescription">
+        
+     
+      </div>
+      
+    </div>
+    
+  
+  </div>
+
+
+
+</div>
+
+
+
+
+</main>
+
+
+
+
+</div>
+<!-- end wrapper container div-->
+
+
+
+<!-- Footer -->
+<footer class="footer">
+  <h5>&copy;Angela 2020</h5>
+  <a href="#"><i class="fa fa-instagram"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-github"></i></a>
+
+   
+
+</footer>
+
+</body>
+</html>
+
+
+<script>
+
+
+document.getElementById("username").addEventListener("mouseover", login);
+</script>
+

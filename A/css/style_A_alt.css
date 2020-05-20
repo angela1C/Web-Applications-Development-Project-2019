@@ -16,7 +16,22 @@ li,button, label,input{
     font-size: 1rem;
   }
 
- 
+  li{
+    list-style-type: none;
+  
+    margin: 0;
+    padding: 0;
+
+  }
+
+/* set up some base colours to use - can easily change them later*/
+
+:root {
+  --main-colour: #30CBE8;
+  --secondary-colour: #FFB000;
+  --complement-colour:#02A2C0; 
+}
+
   
   /* Style the body */
 body {
@@ -33,8 +48,9 @@ body {
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other
 PROBABLY NOT NECESSARY FOR THE PROJECT BUT SEEMS TO BE THE DONE THING
 */
+/*
 @media screen and (max-width: 600px) {
-    .row, nav {   
+     nav {   
       flex-direction: column;
     }
   }
@@ -45,7 +61,7 @@ PROBABLY NOT NECESSARY FOR THE PROJECT BUT SEEMS TO BE THE DONE THING
   .logo {
     height: 2.75rem;
     border-radius: 10%;
-    border: 2px solid #FFBF30;
+    border: 2px solid var(--secondary-colour);
   
     margin-left: 1rem; 
     
@@ -55,18 +71,18 @@ PROBABLY NOT NECESSARY FOR THE PROJECT BUT SEEMS TO BE THE DONE THING
 
 /* header */
 header, main-header{
-  color:#FFBF30;
+  color:var(--secondary-colour);
   width:98%;
  background-color: #30CBE8 ;
  background: linear-gradient(180deg,#30CBE8 , #87E2F3, #57D6ED, #08BEE0, #02A2C0);
  /*background-color: linear-gradient(260deg, #30CBE8 0%, #FFB000 100%); */
   
-  margin: auto;
+ 
   display:flex;
   padding:5px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   text-align:center;
-  font-size:1.1rem;
+  font-size:1.2rem;
 
 }
 
@@ -83,10 +99,10 @@ header, main-header{
     display:flex;
    
     list-style: none;
-    display: flex;
+    
     margin: 0;
     padding: 0;
-    justify-content: baseline;
+    justify-content: space-between;
     align-items: center;
     
     min-height: 12vh;
@@ -97,7 +113,8 @@ header, main-header{
     }
 
   
-  /* the list items are flex items (as the children of the ul flex container) */
+  /* the list items are flex items (as the children of the ul flex container)
+  give the nav links more space than the icons */
   .navbar li {
     flex:3;
   }
@@ -157,18 +174,12 @@ a:hover {
   color: #30CBE8;
 }
 
-   li{
-    list-style-type: none;
-  
-    margin: 0;
-    padding: 0;
-
-  }
+   
 
 
-
-/*  media queries for different size screens*/  
-@media all and (max-width:1000px) {
+/*
+/*  media queries for different size screens 
+/* @media all and (max-width:1000px) {
     
   .navbar ul {
     flex-wrap:wrap;
@@ -177,20 +188,23 @@ a:hover {
   .navbar li {
     flex:1 1 50%;
   }
-/* let the items grow and shrink at same rate but give social icons less of the space */  
+/* let the items grow and shrink at same rate but give social icons less of the space  */
   .navbar .social {
     flex:1 1 25%;
   }  
 }
 /*  let the links take up all the width for small screens*/
+/*
 @media all and (max-width:500px) {    
   .navbar li {
     flex-basis:100%;
   }  
-}
-
+} */
   
-  /* wrapper container for all the content */
+  /* wrapper container for all the content
+  I could make the body a flex container but for now I am placing a flex container underneath the header and above the footer
+  
+  */
   .wrapper {  
 
     display: flex;
@@ -198,9 +212,7 @@ a:hover {
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-  
-    
-    max-width: 100%;
+    max-width: 100vw;
    
   }
   
@@ -660,37 +672,51 @@ button{
   
   transform: translateY(4px);
 }
-/*   a flexible container for cards at the bottom of the page, can be used for pricing, packages images etc */
+/*   a flexible container for card style boxes for going at the bottom of the page, can be used for pricing, packages images etc 
+I don't really need this anymore as just doing a personal website but keep it for now*/
 
 .card-container {
   display: flex;
-  
   overflow: hidden;
-  background-color:whitesmoke;
-
-  
+  background-color:inherit;  
 }
 
   .card {
     background-color:transparent;
     flex: 1 1 0%;
-    
-
     border: none;
     border-radius: 5%;
     padding: 1%;
   }
 
-
-
   .cardDescription {
-    color:black;
+    color:lightgrey;
     padding:10px;
     /*flex-basis is auto so size of content determines the size */
     flex: 1 0 auto;
   }
 
+/*  media queries for different size screens*/  
+@media all and (max-width:1000px) {
+    
+  .navbar ul {
+    flex-wrap:wrap;
+  }
 
+  .navbar li {
+    flex:1 1 50%;
+  }
+/* let the items grow and shrink at same rate but give social icons less of the space */  
+  .navbar .social {
+    flex:1 1 25%;
+  }  
+}
+/*  let the links take up all the width for small screens*/
+@media all and (max-width:500px) {    
+  .navbar li {
+    flex-basis:100%;
+  }  
+}
 
 /*  flex 1 1 0%
 flex grow 1 to expand and fill its container, 
