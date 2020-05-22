@@ -1,0 +1,345 @@
+<!doctype html>
+
+<!-- working with style.css file-->
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>visualise</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ 
+  <link type="text/css" rel="stylesheet" href="css/style.css"/>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+<style type="text/css">
+
+
+:root {
+    --main-color: #30CBE8;
+    --secondary-color: #FFB000;
+    --complement-color:#02A2C0; 
+}
+
+#chartHeight{
+    color:var(--secondary-color);
+    font-size: 1rem;
+    width: 8rem;
+    height: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 2%;
+
+}
+
+#chartWidth{
+    color:var(--secondary-color);
+    font-size: 1rem;
+    width: 8rem;
+    height: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 2%;
+
+}
+#colorPicker{
+  font-size: 1.1rem;
+  background-color: var(--secondary-color);
+}
+  
+
+
+.plot-button{
+    background-color: var(--secondary-color);
+    color: var(--complement-color);
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    padding: 0.2rem;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    font-weight: 200;
+    cursor: pointer;
+    border-radius: 5px; 
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+    
+  }  
+.plot-button:hover {
+  background-color: var(--main-color);
+  color: var(--secondary-color);
+}
+
+#svg_div{ /* set the width of the svg area to be inside the wrapper and not spill out  */
+ 
+  border: 3px solid var(--secondary-color);
+  margin-top: 5%;
+  padding: 2%;
+  background-color: #fff;
+ 
+}
+
+rect:hover {fill:black;)}
+
+</style>
+
+</head>
+<body>
+  <div class="wrapper">
+   
+    <!-- the Header is a flex container -->
+<header class="main-header">
+    <!-- Navigation Bar -->
+    <!--nav bar is a flex container, while the links are flex items -->
+    <nav class="navbar">
+ <!-- class navlogo is a flex container while class logo are the child items-->
+      <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
+       
+        </div>
+        <ul>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="Changes.html">DOM Changes</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li class="social">
+              <a href="#"><i class="fa fa-github"></i></a>
+            </li>
+        
+        </ul>  
+      </nav>
+</header>
+<main>
+
+<article>
+<section id="array-chart">
+<h2>Sunshine chart</h2>
+  <span>Select Height of Chart</span>
+  <!-- creating a place to hold the chart size picker where the user can decide the size of the graph-->
+  <select id="chartHeight">
+      <option value="300">300 Pixels</option>  
+      <option value="400">400 Pixels</option>
+      <option value="500">500 Pixels</option>
+  </select></br>
+  <span>Select Width of Chart</span>
+  <select id="chartWidth">
+    
+    <option value="500">500 Pixels</option>  
+    <option value="600">600 Pixels</option>
+    <option value="700">700 Pixels</option>
+    
+    
+
+  </select></br>
+    <!-- creating a place to hold the colour picker where the user can decide the colours of the bars-->
+   
+      <label for="colourPicker">Select colour</label>
+      <input type="color" id="colourPicker"  value="#FFB000" name="colourPicker"></br>
+      <button class="plot-button" onclick="makePlot()">Draw Chart</button>
+  
+      <!-- a place to output the svg chart on the html page-->
+      <div id="svg_div"></div>
+  
+
+  </section>  
+
+    <section>
+
+      <p>The  graph above was generated using data from an array. Data from an external source could also be used, such 
+        as data from a csv file. 
+        See page for an example of a graph generated from an external csv file.
+    
+      </p>
+
+    </section>
+</article>
+
+</main>
+<!-- end main-->
+
+<!-- Footer -->
+<footer class="footer">
+  <h5>&copy;Angela 2020</h5>
+  <a href="#"><i class="fa fa-instagram"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-github"></i></a>
+  <a href="#">a footer link</a>
+  <a href="#">a footer link</a>
+  <a href="#">a footer link</a>
+</footer>
+<!-- close wrapper container div-->
+</div>
+</body>
+</html>
+
+<script>
+/*  Date,MostSunshineHours
+May-19,13.7
+June-19,13.4
+July-19,15.3
+Aug-19,12.2
+Sept-19,11.2
+Oct-19,8.6
+Nov-19,5.9
+Dec-19,7.3
+Jan-20,7.3
+Feb-20,8.5*/
+
+/* define the function here to draw the plot when the user clicks the button  
+  // the height is taken from the user selection above, the data comes from the array
+  the width of the bars is defined as well as the starting x and y location for the graph to leave space for the axis
+  the colour of the graph comes from the users selection
+*/
+function makePlot(){
+  var svgWidth= 800;
+  var svgHeight = 600;
+  margin = 0;
+  var height = document.getElementById("chartHeight").value - margin;
+  var width = document.getElementById("chartWidth").value;
+  var xloc= 40;
+  var yloc = 10;
+ 
+  var plotColour = document.getElementById("colourPicker").value;
+
+  // create two data arrays
+  var myArray = [13.7,13.4,15.3,12.2,11.2,8.6,5.9,7.3,7.3,8.5];
+  var month = ["May-19","June-19","July-19","Aug-19", "Sept-19", "Oct-19", "Nov-19", "Dec-2019", "Jan-20","Feb-20"];
+  var dataCount = myArray.length;
+  
+  var gap= (width/dataCount)/10;
+  // want a gap between each bar
+   /* i want to set the bar width to change depending on the width selected */
+  var barWidth = (width/dataCount - gap);
+
+  /* create a scale for the y-axis. Here the input is between 0 and the maximum value in the array (the domain). 
+  This is linearly mapped to output between the height selected and 0 */
+  var yScale = d3.scaleLinear()
+    .domain([0,d3.max(myArray)])
+    .range([height,0]);
+
+  /* Create an scale for the y-axis using scaleband so the labels (months) are spaced out at 
+  the bottom of the chart */
+  var xScale = d3.scaleBand()
+    .domain(month.map(function(d){
+      return d;
+    }))  
+    .range([0,width]);
+
+  // Create a vertical axis on the left for the y-axis 
+  var yAxis = d3.axisLeft()
+    .scale(yScale);
+
+  // Create  a horizontal axis on the bottom for the x-axis
+  var xAxis = d3.axisBottom()
+    .scale(xScale);  
+
+  // remove any previous before generating a new one
+  d3.select("#svg_div").selectAll("*").remove();  
+
+  // define an area for the svg chart on the page, setting its height and width
+  let svgContainer = d3.select("#svg_div").append("svg")
+  .attr("height",svgHeight)
+  .attr("width",svgWidth);
+
+  svgContainer.append("text")
+            .attr("transform", "translate(100,0)")
+            .attr("x", 50)
+            .attr("y", 400)
+            .attr("font-size", "16px")
+            .attr("class", "title")
+            .text("Most Sunshine Hours per month");
+  // get all the rectangles that exist on the screen and append them to the svg container div
+  let myRectangle = svgContainer.selectAll("rect")
+  // associate the array MyArray  as the data to be used
+    .data(myArray);
+    // iterate through the array to add the attributes for each rectangle / bar
+  myRectangle.enter()
+    .append("rect")
+    /* set some starting attributes for each bar including where the bar starts and the starting colour */
+      // Determine where each rectangle starts using the index of each value in the array
+
+      .attr("x", function(d,i){return xloc + (i*barWidth/4);}) // 
+      // bars come down from the top  
+      .attr("y", 0)  // or height
+      .attr("width", barWidth)
+      .attr("stroke","#fff")
+      .attr("fill", "#02A2C0")
+      //apply transition to the chart, set its duration
+      .transition()
+      .duration(4000)
+      /* define the finishing attributes, where the bars end up and colour based on user selection
+      using anonymous function using the data values d and their indexes i*/
+      .attr("x", function(d,i){return xloc +gap+ (i*barWidth);})  // 
+      
+      .attr("y",function(d){return yScale(d);}) //
+      .attr("height",function(d){return height - yScale(d);} )
+      .attr("width", barWidth - gap) // or just barwidth
+      
+      .attr("fill", plotColour);
+
+   // create the axis labels using text elements, iterate through all the values in the array
+   let myLabels= svgContainer.selectAll("text")
+    .data(myArray);
+    myLabels.enter()
+    .append("text")
+      // starting position of the text
+      .attr("x", function(d,i){return xloc+ (i*barWidth)+barWidth;}) // or xloc + barwidth/2 
+      .attr("y", height)
+      .attr("text-anchor", "middle")
+      .attr("font-family","sans-serif")
+      .attr("font-size", "11px")
+      .attr("fill", "white")
+      .text(function(d){return d;})  
+      //apply transition
+      .transition()
+      .duration(5000)
+      .delay(2000)
+      .ease(d3.easeBounceOut)
+      // finishing position for the text
+      .attr("x", function(d,i){return (barWidth/2) + (i*barWidth)-gap;})  
+      .attr("y", function(d){return yScale(d) + yloc;})
+      .attr("text-anchor", "start")
+      .attr("font-size", "12px")
+      .attr("fill", "white")
+      .text(function(d){return d;}) 
+
+  /* Add the y-axis to the svg containter
+   add an svg group to the container, then call the y-axis  after bars are drawn so it appears on top */
+  svgContainer.append("g")  
+      /* position the axis using a transform attrbute to make the scale visible at the side 
+      translate values determine how many pixels to move the axis horizontally and vertically  */
+      .attr("transform", "translate(" + (xloc) + ",2)") // (xloc -10)
+      .call(yAxis);  
+  //add the x-axis to the svg div container    
+  svgContainer.append("g")
+
+  /*  must be of this format :   .attr("transform","translate(45,0)")
+   adding the height variable here but as the value is inside quotes,
+   need to break out of the quotes and concatentate the height variable and complete quotes. 
+   "", add quotes */
+  //.attr("transform", "translate(10, " + height + ")")  // or "+(xloc-10)+",0" "
+  .attr("transform", "translate(" + xloc + "," + height + ")") 
+      .call(xAxis)
+      // format the labels
+      .selectAll("text")
+        //apply a rotation to get the labels slanted to be more readable
+        .attr("transform", "rotate(60)")
+        // align the text to the beginning of the x-axis
+        .attr("text-anchor", "start")
+        // nudge over a little so that the months appear in the right positions under their bars
+        .attr("x", "xloc")
+       
+        .attr("y","yloc");      
+}  
+
+
+// next add a title etc
+</script>
+  
+  
+
+

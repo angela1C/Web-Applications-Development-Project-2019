@@ -9,14 +9,14 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
  
-  <link type="text/css" rel="stylesheet" href="css/style_A_alt.css"/>
+  <link type="text/css" rel="stylesheet" href="css/style.css"/>
   <script src="https://d3js.org/d3.v5.min.js"></script>
 
 </head>
 <body>
-
+  <div class="wrapper">
     <!-- the Header is a flex container -->
-<header class="main-header">
+  <header class="main-header">
   
 
 
@@ -32,80 +32,109 @@
           <li><a href="about.html">About</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="Changes.html">DOM Changes</a></li>
-          <li><a href="flexbox-gallery.html">Gallery</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="login.html">Login</a></li>
           <li><a href="#"><i class="fab fa-facebook"></i></a></li>
           <li class="social">
             <a href="#"><i class="fa fa-github"></i></a>
-          </li>
-        
-        </ul>
-       
-      
-    </nav>
-
-    
-</header>
+          </li>        
+        </ul>      
+    </nav>    
+  </header>
   
-
-
-
 <!-- A flexible container -->
-
-<div class="wrapper">
-
 <main class="main">
 
-
-
-<article>
+  <article>
   
-    <section class="hero">
-        <h1 class="hero-title"> Discover</h1>
-    <h2 class="hero-subtitle"> Experiment, learn and share</h2>
-   <button class="hero-button"  onclick="location.href='forms.html'">Login here</button>
-        
-    </section>
+hello article
+<button id="myBtn">Try it</button>
 
+<p id="demo"></p>
 
-</article>
-<!--
-<article class="bgd1">
+  </article>
+
+<div class="cards">
+
  
-    <aside />
 
+  <div class="card">
+    <p id ="para1"></p>
+  <img class="card" id="img1" src="img/bigtree2.jpg" alt="tree" onclick="changeImage()">
 
-
-</article>
--->
   
+     <button id="btn1">click me</button>
+   
+  </div>
 
+  <div class="card">
+    <p id="para2"><img class="card" src="img/bigtree2.jpg" alt="tree" id="img2">
+      Click on the card </p>
+      <button id="btn2" onclick="cardInfo()">card info</button>
+  </div>
 
-
-
-
-
-
-
-<!-- a card group flexible container -->
-
-
+  <div class="card">
+    <p id="para3"><img class="card" src="img/bigtree2.jpg" alt="tree">
+      Click on the card </p>
+      <button id="btn3">click me</button>
+  </div>
 
 
 </div>
 
+<div class="cards">
 
+<div class="card" id="card-a">card-a
+  <p id="par_a"></p>
+
+  <img id="img-a" class="card" src="img/bodhran.jpg" alt="bodhran">
+</div>
+<div class="card" id="card-b" >card-b
+  <p id="par_b"></p>
+
+<img src="img/hut.jpg" id="img-b" alt="hut" >
+
+</div>
+<div class="card" id="card-c">card-c 
+  <p id="par_c"></p>
+  <img src="img/shoe.jpg" id="img-c" class="card" >
+</div>
+<div class="card">card4
+  <p id="par_d"></p>
+  <img src="img/wondy.jpg" id="img-d" class="card">
+
+</div>
+<!-- close card container-->
+</div>
+
+
+<div class="cards">
+  <div class="card"><button id="btn1" onclick="myfunction()">button1</button>
+  <h1 id="head1">head1</h1>
+  <p id="par1">paragraph1</p>
+  <img id="myImg1" class="card" width="50px">
+  
+  </div>
+
+  <div class="card"><button id="btn2">button2</button>
+    <h1 id="head2">head1</h1>
+    <p id="par2">paragraph1</p>
+    <div>
+  <div class="card"><button id="btn3">button1</button></div>
+  <div class="card"><button id="btn4">button1</button></div>
+</div>
+
+<script>
+function myfunction(){
+  document.getElementById("head1").innerHTML="if you want to learn more";
+  document.getElementById("myImg1").src="img/bodhran.jpg";
+  document.getElementById("par1").innerHTML="contact us"
+}
+
+</script>
 
 
 </main>
-
-
-
-
-</div>
-<!-- end wrapper container div-->
-
-
 
 <!-- Footer -->
 <footer class="footer">
@@ -113,14 +142,36 @@
   <a href="#"><i class="fa fa-instagram"></i></a>
   <a href="#"><i class="fa fa-twitter"></i></a>
   <a href="#"><i class="fa fa-github"></i></a>
-
-   
-
 </footer>
+</div>
 
 </body>
 </html>
 
+<script>
+
+document.getElementsByClassName("card").addEventListener("mouseenter",function(){
+  alert ("hello world!");
+})
 
 
+// attach an event listener to the button
+document.getElementById("btn2").addEventListener("click", cardInfo);
+document.getElementById("img2").addEventListener("mouseover",cardInfo);
+document.getElementsByClassName("card").addEventListener("mouseover",cardInfo);
+
+
+function cardInfo() {
+  document.getElementByClass("card").innerHTML = "hello";
+}
+
+
+document.getElementsByTagName("button").addEventListener("click",myButton();
+
+function myButton(){
+  document.getElementsByTagName("button").style.color="red";
+  
+} 
+
+</script>
 
