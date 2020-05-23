@@ -1,0 +1,167 @@
+<!doctype html>
+
+<!-- working with style.css file-->
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>About</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ 
+  <link type="text/css" rel="stylesheet" href="css/style.css"/>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <style>
+    img {
+      float: left;
+    }
+    </style>
+</head>
+<body>
+<!-- A flexible container -->
+
+<div class="wrapper">
+    <!-- the Header is a flex container -->
+<header class="main-header">
+    <!-- Navigation Bar -->
+
+    <!--nav bar is a flex container, while the links are flex items -->
+    <nav class="navbar">
+ <!-- class navlogo is a flex container while class logo are the child items-->
+      <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
+        </div>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="Changes.html">DOM Changes</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li class="social">
+            <a href="#"><i class="fa fa-github"></i></a>
+          </li>
+        
+        </ul>    
+    </nav>
+</header>
+  
+<main class="main">
+
+<article>
+  <section>
+  <p>Hi, I'm Angela and this is my website for the Web Application Development module submitted as part of the Higher Diploma in Computing and Data Analytics at GMIT.</p>
+
+
+  <p>This website was developed using HTML5, CSS, JavaScript and the JavaScript library D3. 
+    I began coding the pages using html elements such as div, paragraph, heading, tables etc and with much reference to W3schools.com. 
+    This in turn directed me to trying out using the CSS flex property to structure the pages better.</p>
+    <p> I did quite a bit of research into using the Flex property and tried out different layouts.</p>
+  </section>
+
+<section>
+
+  This project has  8 main requirements and while I sought to incorporate these into the website in general, here are some specific links containing examples.
+
+
+  <ul>
+    <li><a href="login.html">Allow the customer to enter their login details and have their login details validated via a login screen</a></li>
+    <p>Please note that the </p>
+
+    <li><a href="changes.html">Access and change HTML on the page using  the DOM</a></li>
+    <li><a href="changes2.html">Access and change styling using the DOM</a></li>
+    <li><a href="#">Demonstrate the use of events</a></li>
+    <li><a href="#">Contain 2 data visualisations, one from a csv file, one from an array</a></li>
+   
+
+
+  </ul>
+
+<section>
+  <p><img src="img/bigtree2.jpg" alt="tree" style="width:170px;height:170px;margin-right:15px;"></p>
+   
+</section>
+
+<section>
+
+<p> I defintely spend way too much time deciding on a colour scheme. I could still be at it but this must be submitted.
+  Ditto with styling. 
+  I applied some background colours and borders in order to be able to see the different sections. 
+  Although when you use the developers tools or inspect element you can see the outline easily.
+  These should all be removed now. 
+</p>
+
+<p> A main CSS style sheet is used for most of the pages. There are some page specific styling including for some pages though. </p>
+</section>
+
+</section>
+
+<section>
+
+
+  <div class="cards" id="group2">
+    <div class="showbox slideright" ">box 1</div>
+  
+    <div class="card">
+      <p id ="para1"></p>
+    <img  id="img1" src="img/bigtree2.jpg" alt="tree"> 
+    </div>
+  
+
+  
+    <div class="card" id="card-b" >card-b
+      <p id="par_b"></p>
+    
+    <img src="img/hut.jpg" id="img-b" alt="hut" >
+    
+    </div>
+  
+  
+    <div class="card" id="card-c">
+      <h2>References</h2>
+      <p id="par_c">For references and resources used for this project please click this image</p>
+      <a href="links.html"><img src="img/shoe.jpg" id="img-c"></a>
+    </div>
+  
+  </div>
+  
+
+</section>
+
+
+<section style="background-image: url('img/bigtreefade.jpg');">
+
+
+
+
+
+
+</section>
+
+
+</article>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  
+  <h5>&copy;Angela 2020</h5>
+  <a href="#"><i class="fa fa-instagram"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-github"></i></a>
+  <a href="#">a footer link</a>
+  <a href="#">a footer link</a>
+  <a href="#">a footer link</a>
+
+</footer>
+
+
+</div>
+<!-- end wrapper container div-->
+</body>
+</html>
+
+
+
+

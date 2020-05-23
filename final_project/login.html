@@ -1,0 +1,135 @@
+<!doctype html>
+
+<!-- working with style.css file-->
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ 
+  <link type="text/css" rel="stylesheet" href="css/style.css"/>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+<style>
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<!-- A flexible container -->
+
+<div class="wrapper">
+    <!-- the Header is a flex container -->
+<header class="main-header">
+  
+
+
+    <!-- Navigation Bar -->
+
+    <!--nav bar is a flex container, while the links are flex items -->
+    <nav class="navbar">
+ <!-- class navlogo is a flex container while class logo are the child items-->
+      <div class="navlogo"><img src="img/doras.png" alt="logo" class="logo">
+        </div>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="Changes.html">DOM Changes</a></li>
+          <li><a href="flexbox-gallery.html">Gallery</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li class="social">
+            <a href="#"><i class="fa fa-github"></i></a>
+          </li>
+        
+        </ul>
+       
+      
+    </nav>
+
+    
+</header>
+  
+<main class="main">
+<form id="existing_users_login"  onsubmit="userlogin()">
+ 
+ 
+ 
+  <!--creating a form for logging in-->
+    
+    <!---->
+     <label for="email"></label><br>
+     <input type="email" id="email"  name="email" required autofocus placeholder="Enter your email address" size="30"></br>
+
+     <label for="pwd"></label>
+     <input id="pwd" type="password" name="pwd" size="30" required placeholder="password" autofocus><br>
+            
+     <input type="submit" value="Login" onclick="userlogin()" class="input-button">  
+           
+
+
+             
+</form>
+
+      <!-- -->
+      <button id="join" class="input-button" >Click here if you want to get in touch.</button></br>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <h5>&copy;Angela 2020</h5>
+  <a href="#"><i class="fa fa-instagram"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-github"></i></a>
+</footer>
+
+</div>
+</body>
+</html>
+
+<script>
+  // defining a  function to check the username and password against the stored credentials here
+  function userlogin(){
+      // setting the actual user email and password
+      var validEmail ="angela@gmit.com";
+      var validpassword="password123";
+      // getting the details entered in the login form above
+      var emailEntered = document.getElementById("email").value;
+      var passwordEntered = document.getElementById("pwd").value;
+      // check if combination of user email and password entered match the stored detaisl
+      if (emailEntered === validEmail && passwordEntered === validpassword){
+          // if details are correct, go to the about page
+        window.open("about.html")
+          
+      }else{
+        //alert("incorrect details - please try again.");
+        window.open("login.html");
+      }
+        
+      
+  }
+
+
+  document.getElementById("join").addEventListener("click",join);
+
+function join(){
+  window.open("register.html");
+  
+} 
+
+
+</script>
+
+

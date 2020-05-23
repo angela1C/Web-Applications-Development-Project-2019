@@ -1,0 +1,240 @@
+<!doctype html>
+
+<!-- working with style.css file-->
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>projects</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ 
+  <link type="text/css" rel="stylesheet" href="css/style.css"/>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+<!-- A flexible container -->
+<div class="wrapper">
+    <!-- the Header is a flex container -->
+<header class="main-header">
+    <!-- Navigation Bar -->
+
+    <!--nav bar is a flex container, while the links are flex items -->
+    <nav class="navbar">
+ <!-- class navlogo is a flex container while class logo are the child items-->
+      <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
+        </div>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="Changes2.html">DOM Changes</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li class="social">
+            <a href="#"><i class="fa fa-github"></i></a>
+          </li>
+        
+        </ul>
+       
+      
+    </nav>
+
+    
+</header>
+<main class="main">
+<article>
+
+<section>
+          
+   <h1> Visualisations using D3</h1> 
+  <ul>
+  <li><a href="animatedbar.html">Animated bar</a></li>
+  <li><a href="AprilRaindays.html">Number of Raindays in April (Valencia)</a></li>
+  <li><a href="visualise.html">Visualise from an array</a></li>
+  <li><a href="csv.html">Visualise from a csv</a></li>
+  
+  </ul> 
+</section>
+<section>
+
+  <p>D3 Visualisations</p>
+
+  <h2>Sunshine</h2>
+  Select Chart Size <!-- user can select chart height and colour for the bars of the graph-->
+  <select id="chartHeight">
+      <option value="300">300 Pixels</option>
+      <option value="400">400 Pixels</option>
+      <option value="500">500 Pixels</option>
+      </select>
+      <label for="colorPicker">Pick a colour</label>
+      <input type="color" id="colorPicker" value="#ffff00" name="colorPicker">
+      <button onclick="drawChart()">Draw Chart</button>
+  
+    <div id="myDiv">
+  
+    </div> 
+
+</section>
+</article>
+</main>
+
+
+
+<!-- Footer -->
+<footer class="footer">
+  <h5>&copy;Angela 2020</h5>
+  <a href="#"><i class="fa fa-instagram"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-github"></i></a>
+</footer>
+
+<!-- end wrapper container div-->
+
+</div>
+
+</body>
+</html>
+
+
+<script>
+
+
+  // create a function and put the code for the chart into the function
+  function drawChart(){
+  
+  
+      d3.csv("sunshine1.csv").then(function(data){
+          console.log(data);
+  
+      // Values for bar chart, can use these variables instead of the values used before for the height and width 
+      // user to specify the width
+      var height = document.getElementById("chartHeight").value;
+      var width = 600;
+      // counts the blocks of data from the file, this can be used to determine the width attribute
+      var dataCount = data.length;
+      // create a variable for the gap between the bars
+      var gap = 2;
+  
+      // create a color picker variable for user selected color
+      var chartColor=document.getElementById("colorPicker").value;
+      
+  
+      // even if the number of blocks change
+      // Convert to Numbers for the d3.max function to work for the scaling. (converting from strings to Numbers)
+      data.forEach(function(d){
+          d.MostSunshineHours = Number(d.MostSunshineHours);
+      })
+      // create  a Scale for Y
+      var yScale = d3.scaleLinear()
+          .domain([0,d3.max(data,function(d){
+              return d.MostSunshineHours;
+          })])
+  
+          .range([height,0]);
+  
+      // create a scale for the x-axis
+      var xScale = d3.scaleBand()
+          .domain(data.map(function(d){
+              return d.year;
+          }))
+  
+          .range([0,width]);
+  
+  
+      // Create y Axis
+  
+      var yAxis = d3.axisLeft()
+          .scale(yScale);
+  
+      // Create the X axis using the scale above
+      var xAxis = d3.axisBottom()
+          .scale(xScale);
+  
+      //remove the previous chart before a new one is drawn
+      d3.select("#myDiv").selectAll("*").remove();
+      // create an SVG container using d3.select
+      // append svg to the div
+  
+      var svgContainer = d3.select("#myDiv").append("svg")
+          .attr("width",1000)
+          .attr("height",700);
+  
+      //Create a rectangle
+  
+      var myRectangle = svgContainer.selectAll("rect")
+          .data(data);
+  
+      // Add attributes to the rectangle
+  
+      myRectangle.enter()
+          .append("rect")
+              //before the transition 
+              .attr("stroke","green")
+              .attr("fill","black")
+              // determine the position of the bars- move in from the left 50 pixels to start
+              // each bar position depending on total widht allocated between all the data points
+              .attr("x",function(d,i){
+                  return (50 + (i*(width/dataCount)));
+              })
+             
+              // have the bars appear slowly from top
+              .transition()
+              .duration(1500)
+              .delay(500)
+              .ease(d3.easeLinear)
+              
+              .attr("stroke","blue")
+              
+              .attr("y",function(d){
+                  
+                  return yScale(d.MostSunshineHours);
+              })
+             
+              .attr("width", (width/dataCount - gap))
+              // now want the height to be scaled to the y scale so the height of the bar is scaled to the range and domain values 
+              .attr("height", function(d){
+                  return height - yScale(d.MostSunshineHours);
+              })
+              // user determined color
+              .transition()
+              .duration(1000)
+              .attr("fill",chartColor);
+          
+              
+              
+  
+      // appending the axis after the bars are drawn so that the axis is drawn on top.
+  
+      // append an svg group to the container, then call the y-axis
+      svgContainer.append("g")
+              .attr("transform","translate(45,0)")
+              .call(yAxis);
+  
+  
+      // append an svg group to the container, then call the x-axis
+      svgContainer.append("g")
+  
+              // adding the height variable here but as the value is inside quotes, need to break out of the quotes and concatentate the height variable and comeplet quotes.  "", add quotes
+              .attr("transform", "translate(50, " + height + ")")
+              .call(xAxis)
+              // apply to all text elements on the x axis
+              .selectAll("text")
+              // apply a rotation to get the labels slanted to make it more readable
+              .attr("transform","rotate(60)")
+              // align the text to the beginning of the x-axis to align the text on the x-axis
+              
+              
+              .attr("text-anchor", "start")
+              // move over a little to make the year labels appear in the right position
+              .attr("x","7")
+              .attr("y","3")//;
+  
+      });
+  }
+   </script> 
+
