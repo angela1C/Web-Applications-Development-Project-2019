@@ -5,21 +5,25 @@
 	<head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Playing with the DOM</title>
+	<title>Changes 2</title>
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  
   <link type="text/css" rel="stylesheet" href="css/style.css"/>
   <script src="https://d3js.org/d3.v5.min.js"></script>
 
+<style>
+
+
+</style>
 </head>
 <body>
-  <div class="wrapper">
+<div class="wrapper">
     <!-- the Header is a flex container -->
-<header class="main-header" id="headerx">
+<header class="main-header">
 
     <!--nav bar is a flex container, while the links are flex items -->
-    <nav class="navbar">
+<nav class="navbar">
  <!-- class navlogo is a flex container while class logo are the child items-->
       <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
         </div>
@@ -36,44 +40,44 @@
           <a href="#"><i class="fa fa-github"></i></a>
         </li>
         
-        </ul>
-       
-      
+        </ul>      
     </nav>
     
 </header>
   
 <!----------------------------------end header section-->
-<!-- some boxes to style-->  
+ 
+<main id="main">
 
-
-<main>
-
-    <section>
 
 <h2>DOM Styling</h2>
 <p> On this page I will access and change HTML on this webpage using the DOM, access and change styling on the page through the DOM.</p>
-<p> I will also demonstrate the use of events such as the `onclick` and `mouseover` events.</p>
-
-
-    </section>
-
-
+<p> I will also demonstrate the use of events such as the <em>onclick</em> and <em>mouseover</em> events.</p>
+<p id="change1"></p>
 <div class="BoxcontainerDemo">
     <!-- two boxes for demonstrating DOM styling-->
+    <div class="boxDemo">
+        <button class="button" id="BtnA">Change the background of the page</button></br>
+
+
+
+
+    </div>
+
+
     <div class="boxDemo" id="boxa">
-hello
+
         <div id="svgdemo">
     
             <button id="myBtn">Generate random radius values for making circles</button>
             <button id="myBtn2">colour every odd circle purple</button>
                 
-            <p> The array generated is as follows:</p>
-            <p id="arr">Result</p>
+            <p id="arrayvalues"></p>
+            <p id="arr"></p>
          
             
             <div id="svg2">
-                <p> svg here</p>
+                <p></p>
                   
             </div>
         </div>
@@ -93,7 +97,7 @@ hello
             <h3> Select the your favourite colours from the colour selectors below</h3>
            
             <h3> And change the background colour to your chosen colour!</h3>
-            <p id="selectedcolour"></p>
+            
             <!-- Select the colour from the colour wheel-->
             <p> Select a colour for the background
             <input type="color" id="backgroundcolour" name="background colour" value="#a64ac9"><br> </p>
@@ -101,7 +105,7 @@ hello
               <input type="color" id="fontcolour" name="fontcolour" value="#f5e6cc">
             </p>
             <button onclick="changeColour()">Click the button to see the colours selected...</button>
-        
+            <p id="selectedcolour"></p>
        
 
 
@@ -127,7 +131,7 @@ hello
 
     <div class="boxDemo" id="boxd">
 
-        <p>Here I will demonstrate how to access and change HTML on the web page using the DOM</p>
+        <p></p>
 
 
         <button id="demo4" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" >Demonstrating Mouse Over events</button></br>
@@ -140,8 +144,8 @@ hello
           <button onclick="changeFontColour()">Change the Font Colour</button>
           <button onclick="changeFontSize()">Change the Font Size</button>
        
-      <!-- to reload the page-->    
-      <button onclick="location.reload()">reload the page</button>
+    <!-- to reload the page-->    
+<button onclick="location.reload()">reload the page</button>  
           
 
     </div>
@@ -167,14 +171,43 @@ hello
 
 <script>
 
+// add an event listener to fire when the button is clicked
+document.getElementById("BtnA").addEventListener("click", ChangeBackground);
+// define a function to change the background colour of the page by targeting the mains ection with this id
+function ChangeBackground(){
+    var main = document.getElementById("main");
+    // change the colour of the background
+    document.getElementById("main").style.backgroundColor= "azure";
+    // add some text to the page
+    document.getElementById("change1").innerHTML="Have fun playing around here!";
+  
+}
+
+// a function to take the colours selected by the user and apply them 
+function changeColour() {
+  // select the value of the colour selected
+  var bkgdcolour = document.getElementById("backgroundcolour").value;
+  var fontcolour = document.getElementById("fontcolour").value;
+
+    // returns the hex value of the colour selected by the user
+  document.getElementById("selectedcolour").innerHTML = "You selected the colour " +bkgdcolour +" for the background colour and "+fontcolour +" for the font colours. "+ "</br>" + "Why not try another combination?!"; 
+  // change the background with the selected colour
+  var mydiv = document.getElementById("boxb");
+  
+ 
+  // use the colour selected to change the background
+  mydiv.style.background =bkgdcolour;
+  mydiv.style.color=fontcolour;
+
+}
+
 
 /* add an event listener that activates when the user clicks a button
 This generates an array of 10 random numbers, then prints out the random array
 */
 document.getElementById("myBtn").addEventListener("click", makeCirclesR);
 
-
-// function to generate an array of random numbers between 1 and 20 inclusive
+// This is a function to generate an array of random numbers to be used as the radius measurements
 function makeCirclesR(){
 
 //remove existing svg elements before creating new ones
@@ -182,32 +215,29 @@ d3.select("#svg2").selectAll("*").remove();
  
   // create an empty array
   var myArray = [];
-  // want 7 random numbers
-  while (myArray.length < 7){
+  // want 8 random numbers
+  while (myArray.length < 8){
     // round down using floor function, random generates number between 0 and 1
     var rand = Math.floor(Math.random()*30)+1;
     // push the random numbers into the array
     myArray.push(rand);
 
   
-// send the values of the array to the element with if "arr"
+// send the values of the array to the element with id "arr"
   document.getElementById("arr").innerHTML=myArray;
+  // add some text to the element with this id
+  document.getElementById("arrayvalues").innerHTML="Click the circles if you would like some bigger orange circles!"
+
 }
-   //var arr2=  document.getElementById("arr").innerHTML;
-
-
+// define a container for the svg element and set its dimensions
 let svgContainer = d3.select("#svg2").append("svg")
-        .attr("height",200)
-        .attr("width",500);
-
- 
+        .attr("height",300)
+        .attr("width",600);
+// select all the circles, iterate through the array of data making circles using the attributes defined below
 let myCircles = svgContainer.selectAll("circle")
-    
-        .data(myArray);
-                
+        .data(myArray);        
         myCircles.enter()
             .append("circle")
-// add a gap between each circle using an anonymous function
 // determine where each circles appears in the svg container using the index of each value in the array
         .attr("cx", function(d,i){return 50 + (i * 50);})
         .attr("cy",50)
@@ -215,10 +245,12 @@ let myCircles = svgContainer.selectAll("circle")
         // determine the radius of each circle using the values of the data in the array d
         .attr("r",function(d){return d;})
         .attr("fill", "blue")
-        // function to change clicked circle to orange using this to bind the variable to the DOM element
+        // function to change a circle to orange when it is clicked using 'this' to bind the variable to the DOM element
         .on('click', function(d, i) {
          d3.select(this)
-        .style('fill', 'orange');
+         // change the colour to orange and double the size of the radius
+        .style('fill', 'orange')
+        .attr("r",function(d){return d*2;});
         })
 
         
@@ -251,7 +283,7 @@ function colorPurple(){
 
 
 
-
+// define a function to get the value input by user and send a greeting
 function myName(){
         var y = document.getElementById("input1").value;
         document.getElementById("result").innerHTML = "Hello " +y +" have a nice day now"; 
@@ -260,7 +292,7 @@ function myName(){
 
 
 
-/*  function to demonstrate accessing and changing HTML on the web page using the DOM */
+/*  another function to demonstrate accessing and changing HTML on the web page using the DOM */
    function changeFontColour() {
     document.getElementById("demo2").style.color ="red";
  
@@ -282,16 +314,17 @@ function changeFont(){
     var demo2 = document.getElementById("demo2");
     demo2.style.color ="blue";
     demo2.style.fontSize="smaller";
-    demo2.style.fontSize="1.2rem";
-    demo2.innerHTML="Hello there";
+    demo2.style.fontSize="1.5rem";
+    demo2.innerHTML="I hope you had fun, goodbye for now!";
     demo2.style.fontSize="2rem";
 
 }
 
-
+// add an event listener to the mouse over these elements and call functions below
+document.getElementById("btn3").addEventListener("mouseover", change2);
 // demonstrating mouse over events
 
-
+// define a function to change the element with id and add style attributes and content
 function change2(){
         var par=document.getElementById("demo3");
         par.style.background="#30CBE8";
@@ -305,65 +338,46 @@ function change2(){
         par.style.color="#FFB000";
         par.innerHTML = "Hello. Refresh the page to do this all over again! "; 
         
+        
+        
     }
 
-
-document.getElementById("btn3").addEventListener("mouseover", change2);
+// add an event listener to the mouse over these elements and call functions below
 
 document.getElementById("demo3").addEventListener("mouseover", change3);
-
+// function to 
 function change3(){
     var par=document.getElementById("demo3");
     par.innerHTML="Goodbye for now";
     par.style.animationTimingFunction="ease-out";
-   ;
-    par.style.background="inherit";
+    par.style.background="black";
     par.style.border="none";
     par.style.boxShadow="none";
     par.style.visibility="hidden";
-   
-
 
 }
 
-
-
-
+// function demonstrating mouse over event,change style attributes
 function mouseOver(obj) {
 
   obj.innerHTML = "Hello and Goodbye!"
-  obj.style.background="#30CBE8"
-  obj.style.height="50px"
-  obj.style.color="#FFB000";
+  obj.style.background="#a32751"
+  obj.style.height="200px"
+  obj.style.width="200px"
+  obj.style.color="#fff;";
   
 
 }
-
+// on mouse out change back to original size
 function mouseOut(obj) {
   obj.innerHTML = "Mouse Over Me"
-  obj.style.background="#FF9530"
+  obj.style.background="#fff;"
   obj.style.height="20px"
-  obj.style.color="#30CBE8";
+  obj.style.color="#ccc";
 }
 
 
 
-function changeColour() {
-  // select the value of the colour selected
-  var bkgdcolour = document.getElementById("backgroundcolour").value;
-  var fontcolour = document.getElementById("fontcolour").value;
-
-  
-  document.getElementById("selectedcolour").innerHTML = "You selected the colour " +bkgdcolour +" for the background colour and "+fontcolour +" for the font colours."; 
-  // change the background with the selected colour
-  var mydiv = document.getElementById("boxb");
-  
- 
-  // use the colour selected to change the background
-  mydiv.style.background =bkgdcolour;
-  mydiv.style.color=fontcolour;
-
-}
 
 
 function changeImage() {
