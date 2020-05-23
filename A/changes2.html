@@ -58,10 +58,6 @@
     <!-- two boxes for demonstrating DOM styling-->
     <div class="boxDemo">
         <button class="button" id="BtnA">Change the background of the page</button></br>
-
-
-
-
     </div>
 
 
@@ -142,12 +138,12 @@
           <h2 id="demo2"> Change this text!!!</h2>
           <button class="button" onclick="changeFont()">Change the Font</button>
           <button onclick="changeFontColour()">Change the Font Colour</button>
-          <button onclick="changeFontSize()">Change the Font Size</button>
+  
        
     <!-- to reload the page-->    
 <button onclick="location.reload()">reload the page</button>  
-          
-
+ 
+<a href="gallery.html"><img src="img/paddy.jpg" alt ="dog image" style="float:right;width:15%;"></a>
     </div>
  
 
@@ -180,8 +176,7 @@ function ChangeBackground(){
     document.getElementById("main").style.backgroundColor= "azure";
     // add some text to the page
     document.getElementById("change1").innerHTML="Have fun playing around here!";
-  
-}
+  }
 
 // a function to take the colours selected by the user and apply them 
 function changeColour() {
@@ -198,8 +193,7 @@ function changeColour() {
   // use the colour selected to change the background
   mydiv.style.background =bkgdcolour;
   mydiv.style.color=fontcolour;
-
-}
+  }
 
 
 /* add an event listener that activates when the user clicks a button
@@ -286,7 +280,7 @@ function colorPurple(){
 // define a function to get the value input by user and send a greeting
 function myName(){
         var y = document.getElementById("input1").value;
-        document.getElementById("result").innerHTML = "Hello " +y +" have a nice day now"; 
+        document.getElementById("result").innerHTML = "I hope you are having a nice day" + y; 
         document.getElementById("result").style.color ="#fccd04";
    }
 
@@ -298,12 +292,6 @@ function myName(){
  
  }
  
-function changeFontSize() {
-    var demo2 = document.getElementById("demo2");
-    demo2.style.fontSize ="smaller";
-   
- 
- }
  
 function changeFontStyle() {
     document.getElementById("demo2").style.fontStyle = "italic";
@@ -315,8 +303,8 @@ function changeFont(){
     demo2.style.color ="blue";
     demo2.style.fontSize="smaller";
     demo2.style.fontSize="1.5rem";
-    demo2.innerHTML="I hope you had fun, goodbye for now!";
-    demo2.style.fontSize="2rem";
+    demo2.innerHTML="For more examples of working with the DOM, click on the cute dog image.";
+    demo2.style.fontSize="3rem";
 
 }
 
@@ -357,7 +345,7 @@ function change3(){
 
 }
 
-// function demonstrating mouse over event,change style attributes
+// function demonstrating mouse over event,change style attributes of the object itself
 function mouseOver(obj) {
 
   obj.innerHTML = "Hello and Goodbye!"
@@ -366,7 +354,6 @@ function mouseOver(obj) {
   obj.style.width="200px"
   obj.style.color="#fff;";
   
-
 }
 // on mouse out change back to original size
 function mouseOut(obj) {
@@ -376,10 +363,7 @@ function mouseOut(obj) {
   obj.style.color="#ccc";
 }
 
-
-
-
-
+// function that switches an image
 function changeImage() {
     document.getElementById("myImg").src = "img/sadface.jpg";
    
@@ -388,9 +372,10 @@ function changeImage() {
     var x = document.getElementById("myImg").src;   
     // output the value of the source attribute    
     document.getElementById("imSrc").innerHTML = x;
-        
-    }
-        
+        }
+
+
+  // function that switches back to the original image   
     function changeBack() {
     document.getElementById("myImg").src = "img/smile.jpg";
         
@@ -398,9 +383,7 @@ function changeImage() {
     var x = document.getElementById("myImg").src;   
     // output the value of the source attribute    
     document.getElementById("imSrc").innerHTML = x;
-   
-    
-    }
+   }
     
 
 </script>

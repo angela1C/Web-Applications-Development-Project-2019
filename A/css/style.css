@@ -94,6 +94,7 @@ ul{
     justify-content: space-between;
     align-items: center;  /* maybe stretch */
     min-height: 12vh;
+    /*background: linear-gradient(to bottom,var(--complement-color) 0%,var(--secondary-color) 100%); */
     background-color: linear-gradient(260deg, var(--complement-color) 0%, var(--secondary-color) 100%);
     flex:1;  /* equal width to nav links */
     color:var(--main-color);
@@ -118,7 +119,7 @@ ul{
 .logo {
   height: 2.75rem;
   border-radius: 10%;
-  border: 2px solid var(--secondary-color);
+ 
   margin-left: 1rem; 
 }
 
@@ -197,6 +198,7 @@ will take up the leftover space after taking into account the space needed for m
     background-color: none;
     overflow:scroll;
     font-size: 0.9rem;
+    background-color: azure;
   }
 
 
@@ -205,28 +207,15 @@ creating a flex container for main content taking up most fo the width with spac
 */
 
 
-.main-content, article{
+article{
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
 }
 
-section{
-  background-color: azure;
-}
-.main-content{
-  min-width: 70%;
-  width: calc((48em -100%) *1000);
-  max-width: 100%;
-  background-color: azure;
-}
 
-.main-content aside{
-  min-width: 25%;
-  width: calc((48em -100%) *1000);
-  max-width: 100%;
-}
+
 /* -------------------------------- COME BACK --------------------------*/
 
 
@@ -261,16 +250,15 @@ I don't want the image repeating but to take up the full height of the viewport 
   text-align: center;
   margin: 0.625rem;
 }
-/* styling the title and subtitles that appears over the background hero image 
+/* styling the title and subtitles that appears over the background hero image on home page
 will decide on the colours later*/
 .hero-title{
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 0;
     text-align: center;
-   
-  }
-  
+   }
+  /* styling the subtitle (if any will be used) */
   .hero-subtitle{
     font-size: 2rem;
     font-weight: 200;
@@ -278,10 +266,9 @@ will decide on the colours later*/
     text-align: center;
     
   }
-
-
+  /* styling the button on the home  page, setting colours, sizes, fonts and position in centre*/
   .hero-button{
-    background-color: #a32751;
+    background-color: var(--main-color);
     color: white;
     border: 1px solid #cb376a;
     margin-top: 5rem;
@@ -293,15 +280,71 @@ will decide on the colours later*/
     border-radius: 12px;
     align-self: center;
   }
-  
+  /* styling the button on hover */
   .hero-button:hover{
     background-color: #cb376a;
     border: 1px solid #db7598;
   }
 
+/* style the input elements for forms */
+input{
+  
+  margin-bottom: 10px;
+  
+}
+
+/* not as big as the hero button above*/
+.input-button {
+  background-color: var(--main-color);
+  color: white;
+  border: 1px solid #cb376a;
+    margin-top: 2rem;
+    padding: 0.8rem 1.1rem;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    font-weight: 200;
+    cursor: pointer;
+    border-radius: 12px;
+    align-self: center;
+}
+
+/* styling the button on hover */
+.input-button:hover{
+  background-color: #cb376a;
+  border: 1px solid #db7598;
+}
 
 
+form{
+  
+  /** make this flexbox so children are flex items */
+  display: flex;
+  /*lay children out vertically*/
+  flex-direction: column;
+  /* keep children grouped together in the center */
+  justify-content: center;
+  /* align along center of the column */
+  align-items: center;
+  min-height: 300px;
+  padding: 100px;
+  background-image: url("../img/bigtreefade.jpg");
 
+ 
+
+}
+/*  styling the footer - still decising on the colour scheme!*/
+.main-footer, footer{
+  background: linear-gradient(180deg,#5f0020 , #851138, #a32751, #b6476e, #de7898);
+  background: linear-gradient(to bottom,var(--main-color) 0%,#de7898 100%);
+    /* again using a flex container and adding some styling, centering the  */
+    display:flex;
+    text-align: flex-start;
+    justify-content: space-around;
+    align-items: center;
+    color:var(--complement-color);
+    max-height: 10vh;
+    padding: 0% 5%;
+ }
 
  /* ------------------Cards for the visualisation page------------------------*/
  .cards{
@@ -315,18 +358,18 @@ will decide on the colours later*/
 .card{
   flex:1;/* have all card items as equal width*/
   margin:20px; /* set a margin around each card */
-  background-color: #eee; /* light gray around the edge */
+  background-color:#fff; /* light gray around the edge */
   padding: 15px;  /*some padding */
-  color: var(--main-color);
-  box-shadow:2px 2px; /* set horizontal and vertical offsets */
+  /*box-shadow:1px 1px; /* set horizontal and vertical offsets */
 }
 .card h2{
   font-family: roboto, Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-transform: uppercase;
   margin-top: 10px;
   margin-bottom: 20px;
   color: var(--complement-color);
+  text-align: center;
 }
 .card img{
   margin: 10px;
@@ -342,7 +385,7 @@ will decide on the colours later*/
 
 .card p{
   font-family: roboto, Arial, Helvetica, sans-serif;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   color: var(--secondary-color);
   
 }
@@ -475,68 +518,6 @@ will decide on the colours later*/
         font-weight: bold;
     }
 
-/* -------------------------------- STYLING THE FOOTER ------------------- */
-    /* ----------- FOOTER ---------------- */
-  
-
-    .main-footer, footer{
-      background-color:#5f0020;
-        /* dont need to see display:flex here - it push the contents to the left */
-        display:flex;
-        padding: 5px;
-        text-align: flex-start;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: column;
-      
-        color:var(--secondary-color);
-        font-size: 1rem;
-        
-      min-height: 10vh;
-      padding: 0% 5%;
-      border: 3px solid white;
-    
-    
-      
-      }
-    
-      a.footer {
-          color:#fff;
-          font-size: 1.rem;
-          display:flex;
-          flex-direction: column;
-          align-items: flex-end;
-          justify-content: space-between;
-    
-          align-items: center; 
-    
-      }
-    
-    
-    
-
-/* -------------------------------- STYLING THE login form ------------------- */
-
-      form{
-        /** make this flexbox so children are flex items */
-        display: flex;
-        /*lay children out vertically*/
-        flex-direction: column;
-        /* keep children grouped together in the center */
-        justify-content: center;
-        /* align along center of the column */
-        align-items: center;
-        min-height: 300px;
-        padding: 10px;
-       
-      
-      }
-
-    
-
-
-
-/* ------------- MEDIA QUERY TO BE RESPONSIVE TO SMALLER SCREENS --------- */
 
 
 /*  media queries for different size screens*/  

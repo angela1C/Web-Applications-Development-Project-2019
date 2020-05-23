@@ -287,7 +287,7 @@ function makePlot(){
     myLabels.enter()
     .append("text")
       // starting position of the text
-      .attr("x", function(d,i){return xloc+ (i*barWidth)+barWidth;}) // or xloc + barwidth/2 
+      .attr("x", function(d,i){return xloc+ (i*barWidth)+barWidth;})  
       .attr("y", height)
       .attr("text-anchor", "middle")
       .attr("font-family","sans-serif")
