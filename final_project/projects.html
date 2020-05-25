@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <!-- working with style.css file-->
 <html lang="en">
@@ -12,7 +12,7 @@
   <link type="text/css" rel="stylesheet" href="css/style.css"/>
   <script src="https://d3js.org/d3.v5.min.js"></script>
 <style>
-
+  rect:hover{fill:black;}
 </style>
 </head>
 <body>
@@ -24,14 +24,12 @@
 
     <!--nav bar is a flex container, while the links are flex items -->
     <nav class="navbar">
- <!-- class navlogo is a flex container while class logo are the child items-->
-      <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
-        </div>
+ 
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="projects.html">Projects</a></li>
-          <li><a href="Changes2.html">DOM Changes</a></li>
+          <li><a href="Changes2.html">DOM</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="login.html">Login</a></li>
           <li><a href="#"><i class="fab fa-facebook"></i></a></li>
@@ -51,18 +49,20 @@
 
 <section>
           
-   <h1> Visualisations using D3</h1> 
+   <h1> Visualisations using D3.js</h1> 
+   <p>Below are some visualisations using D3. The first visualisation uses an array of data representing the most sunshine hours in a day
+     for each month over the past year measured at Casement Observatory. </p>
   <ul>
-  <li><a href="animatedbar.html">Animated bar</a></li>
-  <li><a href="AprilRaindays.html">Number of Raindays in April (Valencia)</a></li>
-  <li><a href="visualise.html">Visualise from an array</a></li>
+  
   <li><a href="csv.html">Visualise from a csv</a></li>
+  <li><a href="rain.html">Total Rainfall during April each year (from a csv file)</a></li>
+  <li><a href="visualise.html"> Most sunshine hours in a day (from an array).</a></li>
   
   </ul> 
 </section>
 <section>
 
-  <p>D3 Visualisations</p>
+
 
   <h2>Sunshine</h2>
   Select Chart Size <!-- user can select chart height and colour for the bars of the graph-->
@@ -85,12 +85,14 @@
 
 
 
-<!-- Footer -->
-<footer class="footer">
+<footer class="main-footer">
+
   <h5>&copy;Angela 2020</h5>
   <a href="#"><i class="fa fa-instagram"></i></a>
   <a href="#"><i class="fa fa-twitter"></i></a>
   <a href="#"><i class="fa fa-github"></i></a>
+ 
+
 </footer>
 
 <!-- end wrapper container div-->

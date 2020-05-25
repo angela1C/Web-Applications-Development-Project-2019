@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <!-- working with style.css file-->
 <html lang="en">
@@ -22,20 +22,17 @@
 <!-- A flexible container -->
 
 <div class="wrapper">
-    <!-- the Header is a flex container -->
 <header class="main-header">
     <!-- Navigation Bar -->
 
     <!--nav bar is a flex container, while the links are flex items -->
     <nav class="navbar">
- <!-- class navlogo is a flex container while class logo are the child items-->
-      <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
-        </div>
+
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="projects.html">Projects</a></li>
-          <li><a href="Changes.html">DOM Changes</a></li>
+          <li><a href="Changes2.html">DOM</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="login.html">Login</a></li>
           <li><a href="#"><i class="fab fa-facebook"></i></a></li>
@@ -46,101 +43,48 @@
         </ul>    
     </nav>
 </header>
-  
+
 <main class="main">
 
-<article>
-  <section>
+</br></br>
   <p>Hi, I'm Angela and this is my website for the Web Application Development module submitted as part of the Higher Diploma in Computing and Data Analytics at GMIT.</p>
 
 
-  <p>This website was developed using HTML5, CSS, JavaScript and the JavaScript library D3. 
-    I began coding the pages using html elements such as div, paragraph, heading, tables etc and with much reference to W3schools.com. 
-    This in turn directed me to trying out using the CSS flex property to structure the pages better.</p>
-    <p> I did quite a bit of research into using the Flex property and tried out different layouts.</p>
-  </section>
+  <p>This website was developed using HTML5, CSS, JavaScript and the JavaScript library D3. It is a personal learning website and not themed around any particular type of business. </p>
+  <p> The code was written using Visual Studio Code and tested on my web browser Chrome Version 81.0.4044.138 (Official Build) (64-bit).
+    While I had not settled on a final colour scheme and styling, I am going to go with this for now, although I do realise it might not be to everyone's taste. I will revisit though later.
 
-<section>
 
-  This project has  8 main requirements and while I sought to incorporate these into the website in general, here are some specific links containing examples.
+  </p>
+  <h2>Project Requirements</h2>
+
 
 
   <ul>
+    <li>Have a minimum of 3 linked pages</li>
     <li><a href="login.html">Allow the customer to enter their login details and have their login details validated via a login screen</a></li>
-    <p>Please note that the </p>
-
-    <li><a href="changes.html">Access and change HTML on the page using  the DOM</a></li>
+    <li>Perform Form Validation through JavaScript or HTML to ensure that text fields are not empty and a valid email address is entered.</li>
+    <li><a href="gallery.html">Access and change HTML on the page using  the DOM</a></li>
     <li><a href="changes2.html">Access and change styling using the DOM</a></li>
-    <li><a href="#">Demonstrate the use of events</a></li>
-    <li><a href="#">Contain 2 data visualisations, one from a csv file, one from an array</a></li>
-   
-
+    <li>Demonstrate the use of events</li>
+    <li><a href="projects.html">Contain 2 data visualisations, one from a csv file, one from an array</a></li>
 
   </ul>
 
-<section>
-  <p><img src="img/bigtree2.jpg" alt="tree" style="width:170px;height:170px;margin-right:15px;"></p>
-   
-</section>
-
-<section>
-
-<p> I defintely spend way too much time deciding on a colour scheme. I could still be at it but this must be submitted.
-  Ditto with styling. 
-  I applied some background colours and borders in order to be able to see the different sections. 
-  Although when you use the developers tools or inspect element you can see the outline easily.
-  These should all be removed now. 
-</p>
-
-<p> A main CSS style sheet is used for most of the pages. There are some page specific styling including for some pages though. </p>
-</section>
-
-</section>
-
-<section>
-
-
-  <div class="cards" id="group2">
-    <div class="showbox slideright" ">box 1</div>
-  
-    <div class="card">
-      <p id ="para1"></p>
-    <img  id="img1" src="img/bigtree2.jpg" alt="tree"> 
-    </div>
-  
-
-  
-    <div class="card" id="card-b" >card-b
-      <p id="par_b"></p>
-    
-    <img src="img/hut.jpg" id="img-b" alt="hut" >
-    
-    </div>
-  
-  
-    <div class="card" id="card-c">
-      <h2>References</h2>
-      <p id="par_c">For references and resources used for this project please click this image</p>
-      <a href="links.html"><img src="img/shoe.jpg" id="img-c"></a>
-    </div>
-  
-  </div>
-  
-
-</section>
-
-
-<section style="background-image: url('img/bigtreefade.jpg');">
+  <p> The login details are entered on a page called <a href="login.html">login.html.</a>
+  The correct login details are angela@gmit.ie and password123</p>
 
 
 
 
+<p> A main external CSS style sheet is used for most of the pages in this website which is located in the <b>css</b> folder. 
+There are some page specific styling including in style tags on the various pages.</p>
+<p>To see the visualisations from the CSV files, you must launch a python web server on the folder using <code> python -m http.server</code>.</p>
+<h2>References</h2>
+Some references and resources used for this project are included <a href="links.html"> here.</a></p>
+<a href="links.html">References</a>
 
 
-</section>
-
-
-</article>
 </main>
 
 <!-- Footer -->
@@ -150,9 +94,7 @@
   <a href="#"><i class="fa fa-instagram"></i></a>
   <a href="#"><i class="fa fa-twitter"></i></a>
   <a href="#"><i class="fa fa-github"></i></a>
-  <a href="#">a footer link</a>
-  <a href="#">a footer link</a>
-  <a href="#">a footer link</a>
+
 
 </footer>
 

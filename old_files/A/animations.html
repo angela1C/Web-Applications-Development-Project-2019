@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Animations</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+/* adapting from W3schools flex box layout */
+
+/* using border box to keep sizes of boxes consistent - padding and borders are included */
+* {
+  box-sizing: border-box;
+}
+
+
+/* Style the body */
+body {
+  font-family: roboto;
+  margin: 0;
+}
+
+/* settings for the header */
+.header {
+  padding: 60px;
+  text-align: center;
+  background:#a64ac9;
+  color: white;
+  font-size: 1.5em;
+}
+
+/* Styling the navigation bar at the top of the page */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#fccd04; /*change the colour scheme later! */
+  
+  }
+
+/* Styling the navigation bar links */
+.navbar a {
+  color:lightcyan;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+/* Change color on hover  - just picking random colours for now*/
+.navbar a:hover {
+  background-color:violet;
+  color:springgreen;
+}
+
+/* Column container */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 15%;
+  background-color:#f5e6cc;
+  padding: 35px;
+}
+
+/* Main column */
+.main {
+  flex: 70%;
+  
+  padding: 20px;
+}
+
+/* a colour block */
+.colourblock {
+  background-color:inherit;
+  width: 100%;
+  padding: 20px;
+}
+
+.footer{
+  padding: 30px;
+  text-align: center;
+  background: #a64ac9;
+
+}
+
+.showbox {
+    float: left;
+    margin: 4em 1em;
+    width: 100px;
+    height: 60px;
+    border: 2px solid green;
+    background-color: #fff;
+    line-height: 60px;
+    text-align: center;
+    /*-webkit-transition: 1s ease-in-out;
+    -moz-transition: 1s ease-in-out;
+    -o-transition: 1s ease-in-out; */
+    transition: 1s ease-in-out;
+  }
+  .showbox.slideright:hover {
+    /*
+    -webkit-transform: translate(3em,0);
+    -moz-transform: translate(3em,0);
+    -o-transform: translate(3em,0);
+    -ms-transform: translate(3em,0); */
+    transform: translate(3em,0);
+  }
+
+/* initial state */
+#outerspace {
+    position: relative;
+    height: 400px;
+    background: #0c0440 url(img/outerspace.jpg);
+    color: #fff;
+  }
+  div.rocket {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    /*
+    -webkit-transition: 3s ease-in;
+    -moz-transition: 3s ease-in;
+    -o-transition: 3s ease-in; */
+    transition: 3s ease-in;
+  }
+  div.rocket div {
+    width: 92px;
+    height: 215px;
+    background: url(img/rocket.gif) no-repeat;
+    /*-webkit-transition: 2s ease-in-out;
+    -moz-transition: 2s ease-in-out;
+    -o-transition: 2s ease-in-out; */
+    transition: 2s ease-in-out;
+  }
+
+  /* hover final state */
+  #outerspace:hover div.rocket {
+    /*
+    -webkit-transform: translate(540px,-200px);
+    -moz-transform: translate(540px,-200px);
+    -o-transform: translate(540px,-200px);
+    -ms-transform: translate(540px,-200px); */
+    transform: translate(540px,-200px);
+  }
+  #outerspace:hover div.rocket div {
+    /*
+    -webkit-transform: rotate(70deg);
+    -moz-transform: rotate(70deg);
+    -o-transform: rotate(70deg);
+    -ms-transform: rotate(70deg); */
+    transform: rotate(70deg);
+  }
+  
+
+</style>
+
+
+
+</head>
+<body>
+
+    <!-- the Header -->
+<div class="header">
+    <h1>Welcome to my website</h1>
+    <p>With a <b>flexible</b> layout.</p>
+  </div>
+  
+
+    <!-- Navigation Bar -->
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="alice_home.html">Alice</a>
+  <a href="dedom.html">DOM Styling</a>
+  <a href="flexbox-gallery.html">Gallery</a>
+  <a href="login.html" style="float:right;">Login</a>
+  </div>
+
+<!-- The flexible grid (content) -->
+
+<div class="row">
+    <!-- side bar is left side of main -->
+    <div class="side">
+      <h2>About Me</h2>
+      <h5>Photo of me:</h5>
+      <div><img src="img/rocco.jpg" style="width:80%"></div>
+
+
+      <p>Trying out CSS animations</p>
+      <p> See link below</p>
+      <a href="https://www.the-art-of-web.com/css/css-animation/">The Art of Web</a>
+
+    
+     
+    </div>
+
+
+<div class="main">
+  <h2>CSS Animations</h2>
+ 
+  <div class="showbox slideright" ">box 1</div>
+  <div class="showbox" style="transform: rotate(30deg); border-color: red;">box 2</div>
+  <div class="showbox" style="transform: translate(-3em,1em);">box 3</div>
+  <div class="showbox" style="transform: scale(2);">box 4</div>
+  <div style="clear: left;"></div>
+
+  <div id="outerspace">
+    <div class="rocket">
+    <div><!-- rocket --></div>
+    .rocket
+    </div>#outerspace
+    </div>
+  <div class="fakeimg" style="height:200px;">Image</div>
+    <p>Some text..</p>
+    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+  </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+</body>
+</html>

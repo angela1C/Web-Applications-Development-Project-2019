@@ -1,11 +1,11 @@
 /* global styles */
-/* https://www.w3schools.com/colors/colors_picker.asp */
+
 /* remove default margin and padding and set the height to 100% of the viewport height */
 html {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family:roboto, Verdana, sans-serif; 
+    font-family:Arial, Helvetica, sans-serif;  
   }
   
 *, *:before, *:after {
@@ -15,9 +15,7 @@ html {
 /* set up some base colours to use - can easily change them later*/
 
 
-/* deciding back and forth between colours
-creating variables for the colour scheme
-*/
+/* deciding between these two! */
 :root{
     --main-color: #a32751;
     --secondary-color2:#B9502C;
@@ -28,19 +26,19 @@ creating variables for the colour scheme
    
     
     /* Style the body  remove default margin and padding*/
-body {
-  margin: 0;
-  padding:0;
-  
- 
-}
-/* changing the colour and size of the main heading 1 tags */
- h1 {color: var(--main-color);
-font-size: 2rem;
-font-weight: bolder;}
+  body {
+    margin: 0;
+    padding:0;
+    font-family: roboto;
+    background-color: linear-gradient(to right bottom, #30CBE8 ,#FFB000);
+    height: 100%;
+    /*min-height: 100vh;*/
+     }
+
 
 li{
-    list-style-type: none; /* remove the bullet points from list items and adding some padding */
+    list-style-type: none; /* remove the bullet points */
+    margin: 0;
     padding:10px;
 }
 
@@ -49,35 +47,43 @@ ul{
 }
 
 .a {
-    text-decoration: none;  /* no underlines for links */
+    text-decoration: none;
   }
 
-/* chnages the colour of the buttons on hover for this class */
-.button:hover{
-  background-color: #cb376a;
-  border: 1px solid #db7598;
-  color: white;
-  transform: translateY(2px);
-  }
 
+  .button:hover{
+    background-color: #cb376a;
+    border: 1px solid #db7598;
+    color: white;
+    transform: translateY(2px);
+  }
+  
+  .button:active{
+    background-color: #02A2C0;
+    
+  }
 
 /* --- HEADER --- */
 .main-header, header{
+    color:var(--secondary-color);
+    width:99%;
    background-color: #ae2d59;
    background: linear-gradient(180deg,#5f0020 , #851138, #a32751, #b6476e, #de7898);
-   /*  make the header a flex container so that the nav bar and log are flex items 
-   have the flex items centered with space around, */
+  
+
+   /*  make the header a flex container so that the nav bar and log are flex items */
     display:flex;
     padding:5px;
     justify-content: space-around;
-    text-align:center;  
-    font-size:1.1rem; 
+    text-align:center;
+    font-size:1.1rem;
     margin: 2px;
   }
   
   /* Styling the navigation bar at the top of the page */
   /* make the nav bar a flex container with its direct children being flex items */
   /* make the nav list a flex container  */
+    
   
   nav, .navbar ul{
     display:flex;   /* set as a flex container */
@@ -86,12 +92,17 @@ ul{
     margin: 0;
     padding: 0;
     justify-content: space-between;
-    align-items: center;  
-    min-height: 12vh; /* set a min height in relation to the viewport height */
+    align-items: center;  /* maybe stretch */
+    min-height: 12vh;
+    /*background: linear-gradient(to bottom,var(--complement-color) 0%,var(--secondary-color) 100%); */
+    background-color: linear-gradient(260deg, var(--complement-color) 0%, var(--secondary-color) 100%);
     flex:1;  /* equal width to nav links */
- }
+    color:var(--main-color);
+    }
 
-  /* give the nav links flex give them more space than the social link icons when space is short*/
+  
+  /* the list items are flex items (as the children of the ul flex container) 
+  give them more space than the social link icons when space is short*/
   .navbar li {
     flex:3;
   }
@@ -99,18 +110,42 @@ ul{
   .navbar .social {
     flex:1;
   }
+/* want the nav logo to be at the far left of the header nav bar */ 
+
+
+
+/* for the logo items */
+
+.logo {
+  height: 2.75rem;
+  border-radius: 10%;
+ 
+  margin-left: 1rem; 
+}
+
+.navlogo{
+    display:flex; /* set as a flex container */
+    justify-content:start; /* justify content at start of the cross axis */
+    align-items: start;  /* align to start of main axis */
+    flex-direction: column;  /* want the logo picture on top of the text */    
+    margin: 1rem;    
+    padding: 2px;
+   
+
+}
 
   /* Styling the navigation bar links */
 .navbar a{
   color:var(--secondary-color);
-  font-weight: bolder;
-  font-size: 1.2rem;
+  font-weight: bold;
   padding: 10px 15px;
   text-decoration: none;
   text-align: center;
+  
+
 }
     
-  /* Change color and add rounded corners on hover  */
+  /* Change color on hover  - just picking random colours for now*/
   nav a:hover {
     background-color:var(--main-color);
     color:var(--complement-color);
@@ -118,11 +153,10 @@ ul{
     font-size: 1.2rem;
   }
 
-/* This class is a Flex wrapper container for all the content including the header, main and footer 
-stack the items in this container vertically from top to bottom 
-the items will wrap when required by space 
-the width of the container is the full width of the viewport window*/
+/* wrapper container for all the content including the header, main and footer
+  I could make the body a flex container but for now I am placing a flex container underneath the header and above the footer
   
+  */
   .wrapper {     
     display: flex;
     flex-direction: column;
@@ -131,16 +165,15 @@ the width of the container is the full width of the viewport window*/
     text-align: center;
     max-width: 100vw;   
     margin: 0;
-    padding: 0;  
+    padding: 0;
+    /*background-image: url("../img/bigtreefade.jpg"); */
+    
     
   }
   
-  /* This class is for the main content of the page, not excluding the header and the footer.
-  Giving it a flex value of 1 while the other child items(header and footer have default value of 0) so that main
+  /* giving main a flex value of 1 while the other child items(header and footer have default value of 0) so that main
 will take up the leftover space after taking into account the space needed for main, header and footer */
-  /* Main column - note this is a flex item but also a flex container itself which will contain other elements
-  It wil take up most of the viewport window height with some padding included and some margin
-  */
+  /* Main column - this is a flex item but also a flex container itself*/
   main {
     flex:1; 
     border: none;
@@ -150,25 +183,14 @@ will take up the leftover space after taking into account the space needed for m
     display: flex; /* make flex container and set to column */
     flex-direction: column;
     width: 95%;
+
     margin: 2%;
     padding: 2%;
-    height: 98vh;
+    height: 90vh;
     
   }
-
-/* for any pages that require articles and sections 
-An article will be a flex container, with the sections as the flex child elements
-items will be stacked vertically and wrap.
-Sections can also be flex containers of other elements
-*/
-
-article{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
+/* -------------------------------- COME BACK --------------------------*/
+/* come back to this part on sections and main-content */
   section {
     flex-direction: column;
     border: none;    
@@ -180,36 +202,63 @@ article{
   }
 
 
-/* ---------------------*/
-/* Adding a hero image (a front page main picture) which takes up most of the home page, have it all centered using flex properties
+/* might not need this for all pages, more for the ones where I will write posts 
+creating a flex container for main content taking up most fo the width with space on right for asides
+*/
+
+
+article{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+/* -------------------------------- COME BACK --------------------------*/
+
+
+/* placing a picture on the home page. This is referred to as the hero */
+/** following creativebloq.com here */
+/*  create a hero class, make it a flex container, use a background image and centre it
 I don't want the image repeating but to take up the full height of the viewport */
-.hero {	
+.hero {
+	
 	display:flex;
 	justify-items: center;
 	align-content: center;
   justify-content: center;
   
-/* add the background image, don't repeat, centre using flex properties */  
+/* add the background image, don't repear, centre using flex properties */  
   background: url("../img/treebw.jpg");
   background-size: cover;
   background-repeat:no-repeat;
   background-position: center;
-  height: 100vh; 
-  width: 100vw;  
+  height: 100vh;
+  width: 100vw;
+  
   color:#fff;
   font-weight: bolder;
 }
 
+/*  for any content  - none for now!*/ 
+.hero-content{
+  position:relative;
+  font-family: Verdana, sans-serif;
+  color:white;
+  text-align: center;
+  margin: 0.625rem;
+}
 /* styling the title and subtitles that appears over the background hero image on home page
-will decide on the colours later, make them bold and centered*/
+will decide on the colours later*/
 .hero-title{
-    color: var(--main-color);
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 0;
     text-align: center;
    }
-  /* styling the main headings and the hero subtitle (if any will be used) */
+  /* styling the subtitle (if any will be used) */
   .hero-subtitle{
     font-size: 2rem;
     font-weight: 200;
@@ -237,14 +286,14 @@ will decide on the colours later, make them bold and centered*/
     border: 1px solid #db7598;
   }
 
-/* style the input elements for forms to give some space at the bottom  */
+/* style the input elements for forms */
 input{
   
   margin-bottom: 10px;
   
 }
 
-/* styling the login and register buttons but not as big as the hero button above*/
+/* not as big as the hero button above*/
 .input-button {
   background-color: var(--main-color);
   color: white;
@@ -265,10 +314,10 @@ input{
   border: 1px solid #db7598;
 }
 
-/* styling the forms for logging in and registering */
+
 form{
-  background-image: url("../img/bigtreefade.jpg");  
-  /* make this flexbox so children are flex items */
+  
+  /** make this flexbox so children are flex items */
   display: flex;
   /*lay children out vertically*/
   flex-direction: column;
@@ -278,7 +327,10 @@ form{
   align-items: center;
   min-height: 300px;
   padding: 100px;
+  background-image: url("../img/bigtreefade.jpg");
+
  
+
 }
 /*  styling the footer - still decising on the colour scheme!*/
 .main-footer, footer{
@@ -294,8 +346,7 @@ form{
     padding: 0% 5%;
  }
 
-
- /* set up a class for card type sections but not using them after all for now------------------------*/
+ /* ------------------Cards for the visualisation page------------------------*/
  .cards{
   display: flex; /* create a flex container for the project cards*/
   flex-direction:row;/* */
@@ -347,8 +398,113 @@ form{
   }
 
 
+/* ----------------------- NOT FOR MAIN WEBSITE PAGES - JUST DIVS FOR THE PROJECT REQUIREMENTS ----- */
+/* I may take out the unnecessary bits before submitting as I set-up different box elements for different pages */
+/* --------This part here is only for some pages such as the DOM changes etc---------   */
+/*  creating  a flex box container with several boxes as the flex children  */
+/*
+.box_container{
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;  
+    height: 30 vh;
+    background-color: #dad747;
+  }
   
-/* this was for visualisations */
+  .box {
+    flex-basis: 250px;
+    flex-grow: 1;
+    padding: 5px;
+    margin: auto;
+    align-items: baseline;
+  }
+  
+  .box1{
+    border:none;
+  }
+  
+  .box2 {
+    border: none;
+    background-image: ;
+    background: url(img/ball.jpg);
+    background-size: 100px 80px;
+    background-repeat: no-repeat;
+  }
+  
+  .box3 {
+      flex-grow: 5;
+  }
+  
+  .box4 {
+    flex-basis: 100px;  
+  }
+  
+  .box5 {
+    background: #f1c40f;
+  }
+
+/* ---------------------------- DOM STYLING DEMO ONLY --------------- */
+
+/* for showing accessing and changing styling using the  DOM */
+
+/*
+.BoxcontainerDemo {
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    justify-content: center;
+    border:none; 
+   
+  }
+  
+  .boxDemo {    
+    padding: 5px;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  */
+  /* for showing accessing and changing styling using the  DOM */
+  #boxa { background: seashell;
+  flex: 50%;}
+  
+  #boxb { background:#30CBE8;
+  flex:50%;}
+  
+  #boxc { background:#30CBE8;
+  flex: 0%;}
+  #boxd { background:seashell;
+  flex:0%;}
+  #boxe { background:#dac46c;}
+  #boxf { background:#dad747;}
+  
+  /* for changes.html only */ 
+  /* for showing accessing and changing styling using the  DOM */
+  /* ---------------------------- DOM STYLING DEMO ONLY --------------- */
+  
+/* for the svg demo in changes.html*/
+    .svgdemo{
+      padding:1px;
+      background-color: aquamarine;
+    }
+  
+  /* a div id to change colour */
+  #mycolourblock {
+    background-color: azure;
+    width:100%;
+    height:200 px;
+  
+  }
+  
+  #svgdemo{
+    
+    /*height:300px; */
+    background:whitesmoke;
+    /*width:100%;*/
+    padding:30px;
+    border-radius: 20px;
+  }
+
+/* this was for demonstrating dom queries earlier so remove now */
      
   rect:hover{fill:black;}
 
@@ -361,8 +517,6 @@ form{
         fill:var(--main-color);
         font-weight: bold;
     }
-
-
 
 /*  media queries for different size screens*/  
 @media all and (max-width:1000px) {

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  
+
+<!-- STYLING FOR THE MAIN OUTLINE OF THE WEBPAGE-->
+<style type="text/css">
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: roboto;
+    border:2px solid hotpink;
+    background-image: url("../img/bigtreefade.jpg");
+     
+  }
+    /* Style the body  remove default margin and padding*/
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: aquamarine;
+}
+
+:root {
+    --main-color: #30CBE8;
+    --secondary-color: #FFB000;
+    --complement-color:#02A2C0; 
+}
+/* flxible wrapper container */
+.wrapper {     
+    display: flex;
+    flex-direction: column;
+    height:100vh;
+}
+
+header ul {
+  background-color: var(--primary-colour);
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none; /* this removes the bullet points for li */
+  padding: 10px;
+  outline: 1px solid goldenrod;
+}
+
+ul {
+  margin: 0; /* this removes the default margin for ul */
+}
+
+main {
+    flex:1; 
+    background-color: #eee;
+    border: none;
+    align-items: center;
+    padding: 10px;
+    display: flex; /* make flex container and set to column */
+    flex-direction: column;
+    width: 95%;
+    outline: 5px solid #30CBE8;
+    margin: 2%;
+    padding: 2%;
+  }
+
+.box {
+  background-color: lightcoral;
+  width: 200px;
+  border: 1px black solid;
+  margin: 5px;
+  padding: 10px;
+}
+
+footer {
+  background-color: var(--primary-colour);
+
+
+        /* dont need to see display:flex here - it push the contents to the left */
+  display:flex;
+  padding: 5px;
+  text-align: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  color:#fff;
+  font-size: 1rem;
+       
+        /*border-width: 1px 5px 5px 5px;*/
+  background-color: #ae2d59 ;
+  background: linear-gradient(#ae2d59, #87E2F3, #57D6ED, #08BEE0, #02A2C0);
+  min-height: 10vh;
+  padding: 0% 5%;
+  border: 3px solid white;
+  }
+    
+  a.footer {
+          color:#fff;
+          font-size: 1.rem;
+          display:flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: space-between;
+    
+          align-items: center; 
+    
+      }
+    
+  .footer > h4{
+    flex: 1 1 40rem;
+  }
+
+  /* have nav bar stack when the screen is smaller */ 
+
+@media only screen and (max-width: 600px) {
+  header ul {
+    background-color: var(--primary-colour);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .cards{
+  display: flex; /* create a flex container for the project cards*/
+  flex-direction:row;/* */
+  flex-wrap: nowrap; /* cards side by side */
+  justify-content:space-around;/*set spacing between and around the cards*/
+}
+.card{
+  flex:1;/* have all card items as equal width*/
+  margin:20px; /* set a margin around each card */
+  background-color: #eee; /* light gray around the edge */
+  padding: 15px;  /*some padding */
+}
+.card h2{
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: var(--complement-color);
+}
+.card img{
+  margin: 20px;
+  width:60%;
+
+}
+.card p{
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+}
+
+</style>
+    </head>
+
+<body>
+  <div class="wrapper">
+  <header>
+    <ul>
+      <li>Nav item 1</li>
+      <li>Nav item 2</li>
+      <li>Nav item 3</li>
+      <li>Nav item 4</li>
+      <li>Nav item 5</li>
+    </ul>
+  </header>
+
+  <main>
+    <div class="box">
+      <h1> main box 1</h1>
+      
+    <h2> Box 1</h2>
+    
+    </div>
+    <div class="box">box2 <h2></div>
+
+    <div class="box"><h2> Another box </h2></div>
+    <div class="box"><h2> Another box </h2></div>
+
+
+
+  </main>
+  <footer>Footer</footer>
+
+</div>
+</body>
+
+</html>

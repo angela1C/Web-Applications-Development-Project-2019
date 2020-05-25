@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <!-- working with style.css file-->
 <html lang="en">
@@ -21,22 +21,21 @@
 
     <!--nav bar is a flex container, while the links are flex items -->
     <nav class="navbar">
- <!-- class navlogo is a flex container while class logo are the child items-->
-      <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
-        </div>
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="Changes2.html">DOM Changes</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-          <li class="social">
-            <a href="#"><i class="fa fa-github"></i></a>
-          </li>        
-        </ul>      
-    </nav>    
+
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="Changes2.html">DOM</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+        <li class="social">
+          <a href="#"><i class="fa fa-github"></i></a>
+        </li>
+      
+      </ul>    
+  </nav>
   </header>
   
 <!-- A flexible container -->
@@ -77,7 +76,7 @@
       <p>In this section I use some JavaScript to react to HTML events. Click the buttons below to see some images.
       </p>
 
-      <img src="img/bodhran.jpg" id="myImg1" alt="tree-image" style="float:right;width:15%;">
+      <img src="img/pot.jpg" id="myImg1" alt="plant image" style="float:right;width:15%;">
       
       <button id="mybutton2" onclick="getImage()">Get Image</button></br>
       <!-- calls a function that will change this element-->
@@ -204,17 +203,6 @@ function moreExamples() {
 
 <script>
 
-
-
- 
-
-
-
-function myfunction(){
-  document.getElementById("head1").innerHTML="if you want to learn more";
-  document.getElementById("myImg1").src="img/bodhran.jpg";
-  document.getElementById("par1").innerHTML="contact us"
-}
 
 
 </script>

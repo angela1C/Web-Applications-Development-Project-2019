@@ -1,0 +1,214 @@
+<html>
+
+<head>
+    <title>To-do list</title>
+    <link ref="stylesheet" href="style.css">
+
+
+</head>
+
+
+
+<body>
+
+    <div class="todo-wrapper">
+
+        <h2> a to-do list</h2>
+
+
+        <p> double click to mark an item complete</p>
+
+        <form name="todo-adder">
+
+            <input type="text" id="todo-entry-box" />
+
+
+
+        </form>
+
+        <button id="add-button" class="pretty-button">Add</button>
+        <br />
+
+        <ol id="todo-list">
+
+
+        </ol>
+
+        <div id="control-wrapper">
+
+            <button id="clear-completed-button" class="pretty-button">Clear</button>
+            <button id="empty-button" class="pretty-button"> Empty List</button>
+            <button id="save-button" class="pretty-button"> Save List</button>
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>
+
+<script>
+    // get the element from htl doc with id "add-button"
+    var addButton = document.getElementById("add-button");
+
+    // connect button to an event listener
+    // event listener waits for click on addButton, then reacts by running the addToDoItem function
+    addButton.addEventListener("click", addToDoItem);
+
+    // popup alert saying which button was clicked
+    function addToDoItem() {
+        //alert("Add button clicked!");
+        var itemText = toDoEntryBox.value;
+        //add function below to to Add button
+        // takes the text from the box and pass to the newToDoItem function below
+        //set value to false as new to do item is not complete
+        newToDoItem(itemText, false);
+    }
+
+
+    // get the element from htl doc with id "clear-completed-button"
+var clearButton = document.getElementById("clear-completed-button");
+
+// connect button to an event listener
+// event listener waits for click on addButton, then reacts by running the addToDoItem function
+clearButton.addEventListener("click", clearCompletedToDoItems);
+
+// popup alert saying which button was clicked
+function clearCompletedToDoItems(){
+    // select the children of the toDoList (the items inside it) that completed class
+    var completedItems = toDoList.getElementsByClassName("completed");
+    //loop over the selected items to remove one by one
+    
+    while (completedItems.length > 0) {
+        // removes item at list position  0, the first item on the list
+        //every time the loop runs the list gets shorter and shorter
+        completedItems.item(0).remove();
+    }
+}
+
+
+
+        // get the element from htl doc with id "empty-button"
+        var emptyButton = document.getElementById("empty-button");
+
+        // connect button to an event listener
+        // event listener waits for click on addButton, then reacts by running the addToDoItem function
+        emptyButton.addEventListener("click", emptyList);
+
+        // popup alert saying which button was clicked
+        function emptyList() {
+            alert("empty button clicked")
+            var toDoItems = toDoList.children;
+            while (toDoItems.length > 0) {
+                toDoItems.item(0).remove();
+            }
+        }
+
+        // get the element from htl doc with id "save-button"
+        var saveButton = document.getElementById("save-button");
+
+        // connect button to an event listener
+        // event listener waits for click on addButton, then reacts by running the addToDoItem function
+        saveButton.addEventListener("click", saveList);
+
+        // popup alert saying which button was clicked
+        function saveList() {
+            alert("save list button clicked!");
+        }
+
+        // add list items to the list
+
+        // variables to access the text box and list items
+        var toDoEntryBox = document.getElementById("todo-entry-box");
+        var toDoList = document.getElementById("todo-list");
+
+        //a function to add things to the list
+        function newToDoItem(itemText, completed) {
+            // create a list item to 
+            var toDoItem = document.createElement("li");
+            //create a text node for placing text inside a html element, fill it with contents of itemText
+            // variable passed into the function
+            var toDoText = document.createTextNode(itemText);
+            //takes the element or text node passed in and put it inside ToDoItem
+            toDoItem.appendChild(toDoText);
+
+            //checks if value of completed var passed in to function is true
+            if (completed) {
+                // if so add the class completed to the <li> element
+                toDoItem.classList.add("completed");
+
+            }
+            // puts li item toDoItem inside of toDoList <ol> element
+            toDoList.appendChild(toDoItem);
+            // attaches an event listener for doible-click to toDoItem
+            // tells it to call a function
+            toDoItem.addEventListener("dblclick", toggleToDoItemState);
+        }
+
+        // then connect this function newToDoItem to the Add button above
+
+        // complete class used to mark items as complete
+        // not having that class means the item is not complete
+        //function here adds or removes the class from the items class list, 
+        //adds it if not on the list yet, or removes it if it is.
+        //this keyword used to identify the item that was clicked
+        //when used with a function called by an event listener, which means the element the listener was bound to
+        function toggleToDoItemState() {
+            if (this.classList.contains("completed")) {
+                this.classList.remove("completed");
+            } else {
+                this.classList.add("completed");
+            }
+        }
+
+
+        // to remove items marked as complete
+
+
+        // to save the list
+        // add items to array using push method
+
+
+
+        // next need to loop over toDoList adding each item to the array
+        // need to store each task and completed status
+
+
+
+        function saveList() {
+            var toDos = [];
+
+            for (var i = 0; i < toDoList.children.length; i++) {
+                var toDo = toDoList.children.item(i);
+
+                var toDoInfo = {
+                    "task": toDo.innerText,
+                    "completed": toDo.classList.contains("completed")
+                };
+
+                toDos.push(toDoInfo);
+
+            }
+
+            localStorage.setItem("toDos", JSON.stringify(toDos));
+        }
+
+function loadList(){
+    if(localStorage.getItem("toDos") != null){
+        var toDos = JSON.parse(localStorage.getItem("toDos"));
+
+        for (var i=0; i < toDos.length; i++){
+            var toDo = toDos[i];
+            newToDoItem(toDo.task, toDo.completed);
+        }
+    }
+}
+loadList();
+
+</script>

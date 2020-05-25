@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <!-- working with style.css file-->
 <html lang="en">
@@ -27,21 +27,25 @@
 
     <!--nav bar is a flex container, while the links are flex items -->
     <nav class="navbar">
-
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="Changes2.html">DOM</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-        <li class="social">
-          <a href="#"><i class="fa fa-github"></i></a>
-        </li>
+ <!-- class navlogo is a flex container while class logo are the child items-->
+      <div class="navlogo"><img src="img/fmc.png" alt="logo" class="logo">
+        </div>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="Changes.html">DOM Changes</a></li>
+          <li><a href="flexbox-gallery.html">Gallery</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li class="social">
+            <a href="#"><i class="fa fa-github"></i></a>
+          </li>
+        
+        </ul>
+       
       
-      </ul>    
-  </nav>
+    </nav>
 
     
 </header>
@@ -62,7 +66,7 @@
 
   <label for="email"></label><br>
   <input type="email" id="email"  name="email" required autofocus placeholder="Please enter your email address" size="50"></br>
-  <input type="submit" value="Get in touch" onclick="register()" class="input-button" id="register">  
+  <input type="submit" value="Get in touch" onclick="register()" class="input-button">  
  
              
 </form>
@@ -86,14 +90,8 @@
 </html>
 
 <script>
-// add an event listener 
- document.getElementById("register").addEventListener("submit",register);
-
-// function to print an alert to the screen when the user has entered a valid email address, then back to the home page
-function register(){
-  alert("Thank you for your interest")
-  window.open("index.html");
-}
+  // defining a  function to check the username and password against the stored credentials here
+  
 
 
 </script>

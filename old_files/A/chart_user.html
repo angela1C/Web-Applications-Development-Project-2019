@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Scales in D3</title>
+
+        <meta charset="utf-8"/>
+        <title>Document</title>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <style>
+            rect:hover{fill:black;
+            }
+        </style>
+	</head>
+<body>
+    Select Chart Size
+    <select id="chartHeight">
+        <option value="300">300 Pixels</option>
+        
+        <option value="600">600 Pixels</option>
+        <option value="900">900 Pixels</option>
+        </select>
+        <input type="color" id="colorPicker">
+        <button onclick="drawChart()">Draw Chart</button>
+
+<h2> Scales in D3</h2>
+<div id="myDiv"></div>      
+
+ <script>
+
+// create a function and put the code for the chart into the function
+function drawChart(){
+    //Sales data
+
+    d3.csv("mySales.csv").then(function(data){
+        console.log(data);
+
+    // Values for bar chart, can use these variables instead of the values used before for the height and width 
+    //var height = 300;
+    // user to specify the width
+    var height = document.getElementById("chartHeight").value;
+    var width = 400;
+    // counts the blocks of data from the file, this can be used to determine the width attribute
+    var dataCount = data.length;
+    // create a variable for the gap between the bars
+    var gap = 2;
+
+    // create a color picker variable for user selected color
+    var chartColor=document.getElementById("colorPicker").value;
+
+    // even if the number of blocks change
+    // Convert to Numbers for the d3.max function to work for the scaling. (converting from strings to Numbers)
+    data.forEach(function(d){
+        d.sales = Number(d.sales);
+    })
+    // create  a Scale for Y
+    var yScale = d3.scaleLinear()
+        .domain([0,d3.max(data,function(d){
+            return d.sales;
+        })])
+        // .range([0,300]);
+        .range([height,0]);
+
+    // create a scale for the x-axis
+    var xScale = d3.scaleBand()
+        .domain(data.map(function(d){
+            return d.month;
+        }))
+        //.range([0,252]);
+        .range([0,width]);
+
+
+    // Create y Axis
+
+    var yAxis = d3.axisLeft()
+        .scale(yScale);
+
+    // Create the X axis using the scale above
+    var xAxis = d3.axisBottom()
+        .scale(xScale);
+
+    //remove the previous chart before a new one is drawn
+    d3.select("#myDiv").selectAll("*").remove();
+    // create an SVG container using d3.select
+    // append svg to the div
+
+    var svgContainer = d3.select("#myDiv").append("svg")
+        .attr("width",1000)
+        .attr("height",1000);
+
+    //Create a rectangle
+
+    var myRectangle = svgContainer.selectAll("rect")
+        .data(data);
+
+    // Add attributes to the rectangle
+
+    myRectangle.enter()
+        .append("rect")
+            .attr("x",function(d,i){
+                //return (50 + (i*21));
+                return (50 + (i*(width/dataCount)));
+            })
+            .attr("y",function(d){
+                // also need to amend this, remove the -300 part and ad this to the height attribute instead
+                return yScale(d.sales);
+            })
+            //.attr("width", 20)
+            .attr("width", (width/dataCount - gap))
+            // now want the height to be scaled to the y scale so the height of the bar is scaled to the range and domain values 
+            .attr("height", function(d){
+                //return 300 - yScale(d.sales);
+                return height - yScale(d.sales);
+            })
+            // user determined color
+            //.attr("fill","red");
+            .attr("fill",chartColor);
+
+    // appending the axis after the bars are drawn so that the axis is drawn on top.
+
+    // append an svg group to the container, then call the y-axis
+    svgContainer.append("g")
+            .attr("transform","translate(45,0)")
+            .call(yAxis);
+
+
+    // append an svg group to the container, then call the x-axis
+    svgContainer.append("g")
+            //.attr("transform", "translate(50,300)")
+            // adding the height variable here but as the value is inside quotes, need to break out of the quotes and concatentate the height variable and comeplet quotes.  "", add quotes
+            .attr("transform", "translate(50, " + height + ")")
+            .call(xAxis)
+            // apply to all text elements on the x axis
+            .selectAll("text")
+            // apply a rotation to get the labels slanted to make it more readable
+            .attr("transform","rotate(60)")
+            // align the text to the beginning of the x-axis to align the text on the x-axis
+            .attr("text-anchor", "start")
+            // nudge a little to make the months appear in the right position
+            .attr("x","9")
+            .attr("y","3");
+    });
+}
+ </script>   
+
+</body>
+</html>
