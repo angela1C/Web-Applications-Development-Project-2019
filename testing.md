@@ -1,0 +1,3 @@
+This is a copy of my repo wad_project repo. The actual project files for the web application project were submitted through moodle but I saved it to github. I also saved additional files that were created as part of the development of the project but were not actually part of the final project.
+I cloned the wad-project repo to my machine and then updated the url to the new git repo on github using `git remote set-url origin https://newurl`.
+This included all the additional files from GitHub. I deleted the additional files in GitHub using the `Go to File` option. I then pulled the changes down to this repo using `git pull`.
