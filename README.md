@@ -10,5 +10,5 @@ The repository contains the following files:
 - An `img` subfolder containing images in `jpg` and `png` format used in the Website.
 - Some CSV files used for the D3.js Data Visualisations
 
-The website is hosted on GitHub pages at https://angela1c.github.io/Web_Applications_Development_project_2019/. 
+The website is hosted on GitHub pages at https://angela1c.github.io/Web-Applications-Development-Project-2019/. 
 
